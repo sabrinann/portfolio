@@ -14,8 +14,6 @@
       --surface: #FFFFFF;
       --surface-dim: #F7F8FA;
       --teal: #0A7B83;
-      --teal-light: #E6F4F5;
-      --teal-mid: rgba(10, 123, 131, 0.12);
       --text-on-dark: rgba(255,255,255,0.92);
       --text-on-dark-muted: rgba(255,255,255,0.45);
       --text-on-dark-faint: rgba(255,255,255,0.25);
@@ -27,1067 +25,436 @@
       --font: 'DM Sans', -apple-system, sans-serif;
       --font-mono: 'DM Mono', monospace;
       --sidebar-w: 300px;
-      --header-h: 200px;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     strong, b { font-weight: 700; }
-
     html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--page-bg); color: var(--text-on-dark); min-height: 100vh; -webkit-font-smoothing: antialiased; }
 
-    body {
-      font-family: var(--font);
-      background: var(--page-bg);
-      color: var(--text-on-dark);
-      min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
-    }
+    .page-shell { max-width: 1440px; margin: 0 auto; }
 
-    /* ── PAGE SHELL ── */
-    .page-shell {
-      max-width: 1440px;
-      margin: 0 auto;
-    }
-
-    /* ── HEADER ── */
-    .site-header {
-      display: grid;
-      grid-template-columns: var(--sidebar-w) 1fr;
-    }
-
-    .header-brand {
-      padding: 48px 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .header-info {
-      padding: 48px 0;
-      display: flex;
-      justify-content: center;
-    }
-
-    .header-info-inner {
-      width: 100%;
-      max-width: 1060px;
-      padding: 0 56px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .header-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 15px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 12px;
-    }
-
-    .header-name {
-      font-size: 28px;
-      font-weight: 300;
-      letter-spacing: -0.3px;
-      color: var(--text-on-dark);
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-
-    .header-role {
-      font-size: 12.5px;
-      font-weight: 400;
-      color: var(--text-on-dark-muted);
-      line-height: 1.5;
-      white-space: nowrap;
-    }
-
-    .header-pitch {
-      font-size: 15px;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.65);
-      max-width: 560px;
-      font-weight: 300;
-    }
-
-    .header-right {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      text-align: right;
-      padding-bottom: 4px;
-    }
-
-    .meta-item {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border-dark);
-    }
+    .site-header { display: grid; grid-template-columns: var(--sidebar-w) 1fr; }
+    .header-brand { padding: 48px 32px; display: flex; flex-direction: column; justify-content: center; }
+    .header-info { padding: 48px 0; display: flex; justify-content: center; }
+    .header-info-inner { width: 100%; max-width: 1060px; padding: 0 56px; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-wrap: wrap; }
+    .header-eyebrow { font-family: var(--font-mono); font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+    .header-name { font-size: 28px; font-weight: 300; letter-spacing: -0.3px; color: var(--text-on-dark); line-height: 1.2; margin-bottom: 8px; }
+    .header-role { font-size: 12.5px; font-weight: 400; color: var(--text-on-dark-muted); line-height: 1.5; white-space: nowrap; }
+    .header-pitch { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.65); max-width: 560px; font-weight: 300; }
+    .header-right { display: flex; flex-direction: column; gap: 0; text-align: right; padding-bottom: 4px; }
+    .meta-item { display: flex; flex-direction: column; align-items: flex-end; padding: 10px 0; border-bottom: 1px solid var(--border-dark); }
     .meta-item:last-child { border-bottom: none; }
+    .meta-value { font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--text-on-dark); letter-spacing: 0.02em; }
+    .meta-label { font-size: 11px; color: var(--text-on-dark-muted); margin-top: 1px; }
 
-    .meta-value {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--text-on-dark);
-      letter-spacing: 0.02em;
-    }
+    .layout { display: grid; grid-template-columns: var(--sidebar-w) 1fr; min-height: calc(100vh - 260px); }
 
-    .meta-label {
-      font-size: 11px;
-      color: var(--text-on-dark-muted);
-      margin-top: 1px;
-    }
-
-    /* ── LAYOUT ── */
-    .layout {
-      display: grid;
-      grid-template-columns: var(--sidebar-w) 1fr;
-      min-height: calc(100vh - var(--header-h));
-    }
-
-    /* ── SIDEBAR ── */
-    .sidebar {
-      border-right: 1px solid var(--border-dark);
-      padding: 40px 0;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow-y: auto;
-    }
-
-    .sidebar-label {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--teal);
-      padding: 0 32px;
-      margin-bottom: 16px;
-    }
-
-    .nav-item {
-      display: block;
-      padding: 14px 32px;
-      cursor: pointer;
-      border-left: 2px solid transparent;
-      transition: all 0.2s ease;
-      text-decoration: none;
-    }
-
-    .nav-item:hover {
-      background: rgba(255,255,255,0.04);
-    }
-
-    .nav-item.active {
-      border-left-color: var(--teal);
-      background: rgba(10,123,131,0.08);
-    }
-
-    .nav-number {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--text-on-dark-faint);
-      display: block;
-      margin-bottom: 4px;
-      letter-spacing: 0.05em;
-    }
-
-    .nav-title {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--text-on-dark-muted);
-      line-height: 1.4;
-    }
-
-    .nav-item.active .nav-title {
-      color: var(--text-on-dark);
-    }
-
-    .nav-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-top: 8px;
-    }
-
-    .nav-tag {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      letter-spacing: 0.04em;
-      color: var(--text-on-dark-faint);
-      background: rgba(255,255,255,0.05);
-      padding: 2px 6px;
-      border-radius: 3px;
-    }
-
-    .nav-item.active .nav-tag {
-      color: var(--teal);
-      background: rgba(10,123,131,0.15);
-    }
-
-    .sidebar-divider {
-      height: 1px;
-      background: var(--border-dark);
-      margin: 24px 32px;
-    }
-
-    .sidebar-footer {
-      padding: 0 32px 8px;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .contact-link {
-      font-size: 12px;
-      color: var(--text-on-dark-muted);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: color 0.15s;
-    }
-
+    .sidebar { border-right: 1px solid var(--border-dark); padding: 40px 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+    .sidebar-label { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); padding: 0 32px; margin-bottom: 16px; }
+    .nav-item { display: block; padding: 14px 32px; cursor: pointer; border-left: 2px solid transparent; transition: all 0.2s ease; text-decoration: none; }
+    .nav-item:hover { background: rgba(255,255,255,0.04); }
+    .nav-item.active { border-left-color: var(--teal); background: rgba(10,123,131,0.08); }
+    .nav-number { font-family: var(--font-mono); font-size: 10px; color: var(--text-on-dark-faint); display: block; margin-bottom: 4px; letter-spacing: 0.05em; }
+    .nav-title { font-size: 13px; font-weight: 400; color: var(--text-on-dark-muted); line-height: 1.4; }
+    .nav-item.active .nav-title { color: var(--text-on-dark); }
+    .nav-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+    .nav-tag { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.04em; color: var(--text-on-dark-faint); background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 3px; }
+    .nav-item.active .nav-tag { color: var(--teal); background: rgba(10,123,131,0.15); }
+    .sidebar-divider { height: 1px; background: var(--border-dark); margin: 24px 32px; }
+    .sidebar-footer { padding: 0 32px 8px; }
+    .contact-links { display: flex; flex-direction: column; gap: 8px; }
+    .contact-link { font-size: 12px; color: var(--text-on-dark-muted); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.15s; }
     .contact-link:hover { color: var(--text-on-dark); }
-
     .contact-link svg { flex-shrink: 0; opacity: 0.5; }
 
-    /* ── MAIN CONTENT ── */
-    .main {
-      background: var(--surface-dim);
-      min-height: 100%;
-    }
+    .main { background: var(--surface-dim); min-height: 100%; }
+    .case-panel { display: none; padding: 48px 56px 80px; max-width: 1100px; margin: 0 auto; }
+    .case-panel.active { display: block; }
 
-    .case-panel {
-      display: none;
-      padding: 48px 56px 80px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+    .case-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+    .case-index { font-family: var(--font-mono); font-size: 11px; color: var(--teal); letter-spacing: 0.08em; white-space: nowrap; flex-shrink: 0; }
+    .case-divider-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-tertiary); flex-shrink: 0; }
+    .case-category-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .case-cat-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em; color: var(--text-tertiary); border: 1px solid var(--border-light); padding: 3px 8px; border-radius: 3px; text-transform: uppercase; }
+    .case-title { font-size: 30px; font-weight: 300; color: var(--text-primary); line-height: 1.25; letter-spacing: -0.3px; margin-bottom: 16px; }
+    .case-hook { font-size: 17px; font-weight: 400; color: var(--text-secondary); line-height: 1.65; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border-light); }
 
-    .case-panel.active {
-      display: block;
-    }
-
-    /* Case panel top */
-    .case-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-    }
-
-    .case-index {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--teal);
-      letter-spacing: 0.08em;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .case-divider-dot {
-      width: 3px;
-      height: 3px;
-      border-radius: 50%;
-      background: var(--text-tertiary);
-      flex-shrink: 0;
-    }
-
-    .case-category-tags {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .case-cat-tag {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.04em;
-      color: var(--text-tertiary);
-      border: 1px solid var(--border-light);
-      padding: 3px 8px;
-      border-radius: 3px;
-      text-transform: uppercase;
-    }
-
-    .case-title {
-      font-size: 30px;
-      font-weight: 300;
-      color: var(--text-primary);
-      line-height: 1.25;
-      letter-spacing: -0.3px;
-      margin-bottom: 16px;
-    }
-
-    .case-hook {
-      font-size: 17px;
-      font-weight: 400;
-      color: var(--text-secondary);
-      line-height: 1.65;
-      margin-bottom: 40px;
-      padding-bottom: 32px;
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    /* Sections */
-    .section-block {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 0 32px;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    .section-block:last-of-type {
-      border-bottom: none;
-    }
-
-    .section-label-col {
-      padding-top: 2px;
-    }
-
-    .section-number {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--teal);
-      letter-spacing: 0.06em;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .section-name {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--teal);
-      font-weight: 500;
-      line-height: 1.4;
-    }
-
-    .section-content {}
-
-    .section-content p {
-      font-size: 15px;
-      color: var(--text-primary);
-      line-height: 1.75;
-      margin-bottom: 12px;
-      font-weight: 300;
-    }
-
+    .section-block { display: grid; grid-template-columns: 300px 1fr; gap: 0 32px; padding: 24px 0; border-bottom: 1px solid var(--border-light); }
+    .section-block:last-of-type { border-bottom: none; }
+    .section-label-col { padding-top: 2px; }
+    .section-number { font-family: var(--font-mono); font-size: 10px; color: var(--teal); letter-spacing: 0.06em; display: block; margin-bottom: 4px; }
+    .section-name { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--teal); font-weight: 500; line-height: 1.4; }
+    .section-content p { font-size: 15px; color: var(--text-primary); line-height: 1.75; margin-bottom: 12px; font-weight: 300; }
     .section-content p:last-child { margin-bottom: 0; }
+    .section-content ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+    .section-content ul + p { margin-top: 8px; }
+    .section-content ul:last-child { margin-bottom: 0; }
+    .section-content ul li { font-size: 15px; color: var(--text-primary); line-height: 1.65; padding-left: 16px; position: relative; font-weight: 300; }
+    .section-content ul li::before { content: '•'; position: absolute; left: 0; color: var(--teal); font-size: 15px; top: 0; }
 
-    .section-content ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .section-content ul + p {
-      margin-top: 8px;
-    }
-
-    .section-content ul:last-child {
-      margin-bottom: 0;
-    }
-
-    .section-content ul li {
-      font-size: 15px;
-      color: var(--text-primary);
-      line-height: 1.65;
-      padding-left: 16px;
-      position: relative;
-      font-weight: 300;
-    }
-
-    .section-content ul li::before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      color: var(--teal);
-      font-size: 15px;
-      top: 0;
-    }
-
-    /* At a Glance */
-    .glance-block {
-      padding: 24px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    .glance-accent {
-      border-left: 3px solid var(--teal);
-      padding-left: 14px;
-    }
-
-    .glance-title {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--teal);
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-
-    .glance-accent p {
-      font-size: 17px;
-      line-height: 1.65;
-      color: var(--text-primary);
-      font-weight: 300;
-      margin: 0;
-    }
-
+    .glance-block { padding: 24px 0; border-bottom: 1px solid var(--border-light); }
+    .glance-accent { border-left: 3px solid var(--teal); padding-left: 14px; }
+    .glance-title { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); font-weight: 500; margin-bottom: 10px; }
+    .glance-accent p { font-size: 17px; line-height: 1.65; color: var(--text-primary); font-weight: 300; margin: 0; }
     .glance-accent p strong { font-weight: 700; }
 
-    /* Impact items */
-    .impact-row {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .impact-row { display: flex; flex-direction: column; gap: 8px; }
+    .impact-item { padding: 14px 16px; background: var(--surface); border: 1px solid var(--border-light); border-left: 2px solid var(--teal); border-radius: 4px; }
+    .impact-item p { font-size: 14px !important; color: var(--text-primary) !important; font-weight: 400 !important; margin: 0 !important; line-height: 1.5 !important; }
+    .section-content p.impact-hero { font-size: 19px; font-weight: 500; color: var(--teal); line-height: 1.4; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border-light); }
+    .impact-3grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .impact-3card { background: var(--surface); border: 1px solid var(--border-light); border-radius: 6px; padding: 14px 14px; }
+    .impact-3head { font-size: 13px; font-weight: 700; color: var(--teal); margin-bottom: 8px; line-height: 1.3; }
+    .impact-3body { font-size: 13px; color: var(--text-primary); line-height: 1.55; }
 
-    .impact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 14px 16px;
-      background: var(--surface);
-      border: 1px solid var(--border-light);
-      border-left: 2px solid var(--teal);
-      border-radius: 4px;
-    }
+    .reveal-block { background: var(--reveal-bg); border-radius: 6px; padding: 24px 28px; margin-top: 8px; }
+    .reveal-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; display: block; }
+    .reveal-block p { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.7; font-weight: 300; margin: 0 0 14px 0; }
+    .reveal-block p:last-child { margin-bottom: 0; }
 
-    .impact-item p {
-      font-size: 14px !important;
-      color: var(--text-primary) !important;
-      font-weight: 400 !important;
-      margin: 0 !important;
-      line-height: 1.5 !important;
-    }
+    .skills-row { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 32px; margin-top: 32px; border-top: 1px solid var(--border-light); }
+    .skill-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--text-secondary); border: 1px solid var(--border-light); padding: 5px 10px; border-radius: 3px; text-transform: uppercase; }
 
-    .section-content p.impact-hero {
-      font-size: 19px;
-      font-weight: 500;
-      color: var(--teal);
-      line-height: 1.4;
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border-light);
-    }
+    .portfolio-note { padding: 48px 56px; font-family: var(--font-mono); font-size: 11px; color: var(--text-on-dark-faint); letter-spacing: 0.04em; text-align: center; }
 
-    .impact-3grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 10px;
-    }
-
-    .impact-3card {
-      background: var(--surface);
-      border: 1px solid var(--border-light);
-      border-radius: 6px;
-      padding: 14px 14px;
-    }
-
-    .impact-3head {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--teal);
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
-
-    .impact-3body {
-      font-size: 13px;
-      color: var(--text-primary);
-      line-height: 1.55;
-    }
-
-    /* Reflection */
-    .reveal-block {
-      background: var(--reveal-bg);
-      border-radius: 6px;
-      padding: 24px 28px;
-      margin-top: 8px;
-    }
-
-    .reveal-label {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .reveal-block p {
-      font-size: 14px;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.7;
-      font-weight: 300;
-      margin: 0 0 14px 0;
-    }
-
-    .reveal-block p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Skills */
-    .skills-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      padding-top: 32px;
-      margin-top: 32px;
-      border-top: 1px solid var(--border-light);
-    }
-
-    .skill-tag {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.04em;
-      color: var(--text-secondary);
-      border: 1px solid var(--border-light);
-      padding: 5px 10px;
-      border-radius: 3px;
-      text-transform: uppercase;
-    }
-
-    /* Footer note */
-    .portfolio-note {
-      padding: 48px 56px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-on-dark-faint);
-      letter-spacing: 0.04em;
-      text-align: center;
-    }
-
-    /* Mobile */
     @media (max-width: 768px) {
-      .site-header {
-        grid-template-columns: 1fr;
-      }
-      .header-brand {
-        border-bottom: 1px solid var(--border-dark);
-        padding: 32px 24px;
-      }
-      .header-role {
-        white-space: normal;
-      }
-      .header-info {
-        padding: 32px 0;
-      }
-      .header-info-inner {
-        padding: 0 24px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-      }
-      .header-right {
-        flex-direction: row;
-        text-align: left;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        gap: 0 24px;
-        width: 100%;
-      }
-      .meta-item {
-        align-items: flex-start;
-        border-bottom: none;
-        padding: 4px 0;
-      }
-      .layout {
-        grid-template-columns: 1fr;
-      }
-      .sidebar {
-        position: static;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid var(--border-dark);
-        padding: 24px 0;
-      }
-      .case-panel {
-        padding: 32px 24px 56px;
-      }
-      .section-block {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-      .section-label-col {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-      }
-      .impact-3grid {
-        grid-template-columns: 1fr;
-      }
+      .site-header { grid-template-columns: 1fr; }
+      .header-brand { border-bottom: 1px solid var(--border-dark); padding: 32px 24px; }
+      .header-role { white-space: normal; }
+      .header-info { padding: 32px 0; }
+      .header-info-inner { padding: 0 24px; flex-direction: column; align-items: flex-start; gap: 24px; }
+      .header-right { flex-direction: row; text-align: left; align-items: flex-start; flex-wrap: wrap; gap: 0 24px; width: 100%; }
+      .meta-item { align-items: flex-start; border-bottom: none; padding: 4px 0; }
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border-dark); padding: 24px 0; }
+      .case-panel { padding: 32px 24px 56px; }
+      .section-block { grid-template-columns: 1fr; gap: 8px; }
+      .section-label-col { display: flex; gap: 8px; align-items: center; }
+      .impact-3grid { grid-template-columns: 1fr; }
+      .portfolio-note { padding: 32px 24px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="page-shell">
+<div class="page-shell">
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="header-brand">
-      <p class="header-eyebrow">Product Portfolio</p>
-      <h1 class="header-name">Sabrina Nguyen</h1>
-      <p class="header-role">Product Owner · Product Manager</p>
-    </div>
-    <div class="header-info">
-      <div class="header-info-inner">
-        <p class="header-pitch">At MMIT, I build products that help pharmaceutical manufacturers navigate a fragmented market access landscape, reducing the delays that stand between patients and the therapies they need. The product initiatives below represent a sample of my work, chosen to show how I think, not just what I've shipped. Each one reflects a different dimension of product work.</p>
-        <div class="header-right">
-          <div class="meta-item">
-            <span class="meta-value">3+ Years</span>
-            <span class="meta-label">Product Management</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-value">Health Tech</span>
-            <span class="meta-label">Healthcare &amp; Life Sciences</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-value">0→1 &amp; Enterprise</span>
-            <span class="meta-label">B2B SaaS</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-value">Claims · IQVIA · MMIT</span>
-            <span class="meta-label">Data Products</span>
-          </div>
-        </div>
+<header class="site-header">
+  <div class="header-brand">
+    <p class="header-eyebrow">Product Portfolio</p>
+    <h1 class="header-name">Sabrina Nguyen</h1>
+    <p class="header-role">Product Owner · Product Manager</p>
+  </div>
+  <div class="header-info">
+    <div class="header-info-inner">
+      <p class="header-pitch">At MMIT, I build products that help pharmaceutical manufacturers navigate a fragmented market access landscape, reducing the delays that stand between patients and the therapies they need. The product initiatives below represent a sample of my work, chosen to show how I think, not just what I've shipped. Each one reflects a different dimension of product work.</p>
+      <div class="header-right">
+        <div class="meta-item"><span class="meta-value">3+ Years</span><span class="meta-label">Product Management</span></div>
+        <div class="meta-item"><span class="meta-value">Health Tech</span><span class="meta-label">Healthcare &amp; Life Sciences</span></div>
+        <div class="meta-item"><span class="meta-value">0→1 &amp; Enterprise</span><span class="meta-label">B2B SaaS</span></div>
+        <div class="meta-item"><span class="meta-value">Claims · IQVIA · MMIT</span><span class="meta-label">Data Products</span></div>
       </div>
     </div>
-  </header>
-
-  <!-- BODY LAYOUT -->
-  <div class="layout">
-
-    <!-- SIDEBAR NAV -->
-    <nav class="sidebar" aria-label="Case studies">
-
-      <p class="sidebar-label">Connect With Me</p>
-
-      <div class="sidebar-footer">
-        <div class="contact-links">
-          <a href="mailto:sabrinann@gmail.com" class="contact-link">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            sabrinann@gmail.com
-          </a>
-          <a href="tel:7042873721" class="contact-link">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l1.09-1.09a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            704-287-3721
-          </a>
-          <a href="https://www.linkedin.com/in/sabrina-nguyen-7ab9b9102/" class="contact-link" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            LinkedIn
-          </a>
-          <span class="contact-link" style="cursor:default;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            New York, NY
-          </span>
-        </div>
-      </div>
-
-      <div class="sidebar-divider"></div>
-
-      <p class="sidebar-label">Product Initiatives</p>
-
-      <a class="nav-item active" onclick="showCase('cs01', this)">
-        <span class="nav-number">01</span>
-        <span class="nav-title">Taking a SaaS Platform from 0→1</span>
-        <div class="nav-tags">
-          <span class="nav-tag">0→1</span>
-          <span class="nav-tag">GTM</span>
-          <span class="nav-tag">Architecture</span>
-        </div>
-      </a>
-
-      <a class="nav-item" onclick="showCase('cs02', this)">
-        <span class="nav-number">02</span>
-        <span class="nav-title">Scalability Over Customization</span>
-        <div class="nav-tags">
-          <span class="nav-tag">Enterprise</span>
-          <span class="nav-tag">Stakeholders</span>
-          <span class="nav-tag">Platform</span>
-        </div>
-      </a>
-
-      <a class="nav-item" onclick="showCase('cs03', this)">
-        <span class="nav-number">03</span>
-        <span class="nav-title">Designing AI Around the Moment of Need</span>
-        <div class="nav-tags">
-          <span class="nav-tag">Discovery</span>
-          <span class="nav-tag">AI Strategy</span>
-          <span class="nav-tag">Trust</span>
-        </div>
-      </a>
-
-    </nav>
-
-    <!-- MAIN CONTENT AREA -->
-    <main class="main">
-
-      <!-- INITIATIVE 01 -->
-      <div id="cs01" class="case-panel active">
-        <div class="case-meta">
-          <span class="case-index">Product Initiative 01</span>
-        </div>
-
-        <h2 class="case-title">Taking a SaaS Platform from 0→1</h2>
-
-        <div class="glance-block">
-          <div class="glance-accent">
-            <span class="glance-title">At a Glance</span>
-            <p>I translated a business objective focused on enterprise growth into a new B2B SaaS product offering, expanding the company's product portfolio to serve a headquarters persona and unlock larger commercial opportunities. I chose a modular platform model and a focused MVP to reduce upfront investment risk while preserving flexibility in how the product could be commercialized and expanded over time. I led the strategy from concept through market launch, securing a paying client within days of commercial enablement and giving the business early commercial validation to guide future investment and growth.</p>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">❗ The Problem</span>
-          </div>
-          <div class="section-content">
-            <p>Pharmaceutical manufacturers invest heavily in commercial strategy at headquarters, but strategic planning and execution in the field often operate through disconnected workflows.</p>
-            <p>For the business, that gap also represented a growth constraint. The existing product served the field execution persona, while larger enterprise opportunities required creating value for headquarters teams as well.</p>
-            <p>The product opportunity was to create a cohesive platform that connected strategic planning with execution in the field while expanding the product into a new user persona.</p>
-            <p>💡 <strong>The product challenge was broader than adding new functionality:</strong> how do you evolve an existing product into a larger enterprise platform without committing to the entire vision before demand is proven?</p>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">🧠 Product Strategy</span>
-          </div>
-          <div class="section-content">
-            <p>I wanted faster time to market, flexibility in the commercialization model, and a practical way to expand into a new enterprise persona without building the full platform upfront. So I chose a modular platform approach.</p>
-            <p>The approach had to accomplish three things:</p>
-            <ul>
-              <li><strong>Reach the market faster:</strong> Deliver meaningful value before completing the entire platform</li>
-              <li><strong>Create commercialization flexibility:</strong> Allow customers to adopt and purchase capabilities based on their needs</li>
-              <li><strong>Preserve the larger product vision:</strong> Build each capability as part of a cohesive workflow connecting headquarters strategy with field execution</li>
-            </ul>
-            <p>💡 <strong>The goal was not to prove we could build the entire platform. It was to prove we could create enough value for a new persona to earn the right to build more.</strong></p>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">⚖️ Key Product Decisions</span>
-          </div>
-          <div class="section-content">
-            <p><strong>Modular platform over monolithic</strong></p>
-            <p>Breaking the vision into independently valuable modules reduced upfront investment risk and created more flexibility in how the product could be packaged, sold, and expanded.</p>
-            <p><strong>Focused MVP over broad initial scope</strong></p>
-            <p>Concentrating the first release on one meaningful workflow allowed the team to test the product and commercial hypothesis without spreading investment across the entire platform vision.</p>
-            <p><strong>Build for the current opportunity without designing into a corner</strong></p>
-            <p>I kept the MVP deliberately scoped while making architecture and workflow decisions with future modules in mind. That balance allowed us to move quickly without making the first release responsible for every future use case.</p>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">🤝 From Product Strategy to Market</span>
-          </div>
-          <div class="section-content">
-            <p>Once the strategy was set, the next challenge was turning a broad platform vision into something each function could act on and ultimately take to market.</p>
-            <p>My role was to keep product strategy, delivery, and commercialization moving toward the same MVP.</p>
-            <ul>
-              <li><strong>Product, UX, and Engineering:</strong> Translated the vision into a prioritized roadmap, MVP scope, epics, requirements, and an executable backlog; stood up the new scrum team and maintained tight feedback loops as the product evolved</li>
-              <li><strong>Product Marketing and Commercial:</strong> Pressure tested the value proposition and positioning against market conversations, developed enablement materials, and refined how the product was communicated externally</li>
-              <li><strong>Sales and Solution Consulting:</strong> Supported product demonstrations and real customer conversations, creating a direct feedback loop between what we were building and what the market was responding to</li>
-            </ul>
-            <p>That cross-functional alignment mattered because launching the product was only one part of the objective. The organization also needed to understand how to position it, sell it, and learn from the first market signals.</p>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">📈 Impact</span>
-          </div>
-          <div class="section-content">
-            <p class="impact-hero">Secured the first paying client within days of commercial enablement, the fastest turn from launch to revenue on the team that year.</p>
-            <div class="impact-3grid">
-              <div class="impact-3card">
-                <div class="impact-3head">0 → live launch</div>
-                <div class="impact-3body">Took a new B2B SaaS offering from concept through commercial launch</div>
-              </div>
-              <div class="impact-3card">
-                <div class="impact-3head">New persona unlocked</div>
-                <div class="impact-3body">Expanded the product footprint into a new headquarters persona</div>
-              </div>
-              <div class="impact-3card">
-                <div class="impact-3head">Built to scale</div>
-                <div class="impact-3body">Established a modular foundation for independent future scaling</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">🔁 Reflection</span>
-          </div>
-          <div class="section-content">
-            <div class="reveal-block">
-              <p>What stands out to me most about this work is that the hardest part was not executing a roadmap. It was deciding what deserved to become the roadmap in the first place. We had a business objective and a broader platform opportunity, but no predetermined product shape for how to pursue it.</p>
-              <p>The modular strategy and focused MVP taught me to think about product structure as a way to learn, not just a way to deliver. By choosing a smaller starting point while preserving the broader platform vision, we could create commercial value, test the underlying assumptions, and use real market evidence to inform what deserved investment next.</p>
-              <p>Later market signals ultimately changed the case for continuing to invest in every module we had originally envisioned. That became an equally important part of the lesson for me. Getting something to market is not the end of validation, and being committed to a product strategy should never mean becoming attached to it when the evidence changes.</p>
-              <p>That experience changed how I think about product strategy. A strategy can provide conviction and direction without becoming a commitment to every assumption behind it. The real discipline is knowing what you are trying to prove, recognizing when the evidence changes, and being willing to change course without losing sight of the larger objective.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- INITIATIVE 02 -->
-      <div id="cs02" class="case-panel">
-        <div class="case-meta">
-          <span class="case-index">Product Initiative 02</span>
-        </div>
-
-        <h2 class="case-title">Scalability Over Customization</h2>
-
-        <div class="glance-block">
-          <div class="glance-accent">
-            <span class="glance-title">At a Glance</span>
-            <p>I led a platform redesign that protected a strategically important enterprise account and turned an extreme client edge case into a scalable product capability. I chose a platform solution over a faster client specific workaround, accepting a longer timeline and sustained client pressure to protect scalability. I managed stakeholder expectations across Engineering, Client Success, and senior commercial leadership by translating technical uncertainty into clear business tradeoffs and maintaining confidence in the decision. The client launched successfully, and the solution strengthened the platform's ability to support future enterprise complexity without repeated customization.</p>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">❗ The Problem</span>
-          </div>
-          <div class="section-content">
-            <p>Scaling an enterprise product means supporting increasingly complex customers without turning every outlier into custom product logic.</p>
-            <p>A strategically important client introduced an operating model that pushed the platform to up to 15x standard data volume, while the failure conditions could only be reproduced in the client's environment.</p>
-            <p>That created two problems at once: a technical problem with no obvious solution and a client delivery problem with a strategically important relationship at risk.</p>
-            <p>💡 <strong>The product challenge was balancing the needs of the client in front of us with the long term integrity of the platform.</strong></p>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">🧠 Product Decision</span>
-          </div>
-          <div class="section-content">
-            <p>I had two viable paths: contain the issue with a client specific workaround, or invest in a platform solution that could absorb similar complexity in the future.</p>
-            <p>I chose the platform path because it solved a recurring scalability constraint, avoided repeated client specific customization, and created reusable value beyond this one account.</p>
-            <ul>
-              <li><strong>Client specific workaround:</strong> Faster resolution, quicker relief for the client relationship, and lower short term delivery risk, but added technical debt and preserved the same scalability constraint for the next complex customer.</li>
-              <li><strong>Platform solution:</strong> More engineering effort, a longer path to resolution, and continued client pressure in the near term, but addressed the underlying constraint and created a reusable path for future enterprise customers.</li>
-            </ul>
-            <p>💡 <strong>The harder decision was choosing long term product scalability over immediate client relief, knowing that doing so meant carrying the client pressure longer and managing that relationship more deliberately until the solution was ready.</strong></p>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">🤝 Executive &amp; Client Stakeholder Management</span>
-          </div>
-          <div class="section-content">
-            <p>Choosing the platform path meant deliberately accepting a longer resolution timeline while the client relationship was already under pressure. The product decision only worked if we could maintain confidence in the path forward long enough to deliver it.</p>
-            <p>I partnered closely with Client Success and senior commercial leadership, including the VP responsible for Strategic Accounts, to translate evolving technical findings into clear business implications, reset expectations when timelines changed, and manage the client relationship while Engineering worked toward a solution.</p>
-            <p>My role was to create enough clarity for each audience to make the next decision.</p>
-            <ul>
-              <li><strong>Engineering:</strong> Protect focus, control scope, and keep the team moving while root causes were still emerging</li>
-              <li><strong>Executive and commercial leadership:</strong> Surface the tradeoffs, risks, and realistic delivery path needed to make informed client decisions</li>
-              <li><strong>Client stakeholders:</strong> Maintain transparency and confidence in the path forward without introducing unnecessary technical complexity</li>
-            </ul>
-            <p>This required managing two tracks simultaneously: solving the underlying product problem and protecting a high value enterprise relationship while that solution was still taking shape.</p>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">📈 Impact</span>
-          </div>
-          <div class="section-content">
-            <p class="impact-hero">Protected a strategically important enterprise account while turning an extreme edge case into a reusable platform capability, reducing future customization and strengthening scalability.</p>
-            <div class="impact-3grid">
-              <div class="impact-3card">
-                <div class="impact-3head">Enterprise launch protected</div>
-                <div class="impact-3body">Successfully launched a strategically important account despite unprecedented data complexity</div>
-              </div>
-              <div class="impact-3card">
-                <div class="impact-3head">Escalation → capability</div>
-                <div class="impact-3body">Converted a client escalation into a reusable platform capability, reducing the need for custom engineering going forward</div>
-              </div>
-              <div class="impact-3card">
-                <div class="impact-3head">Scalability + stability</div>
-                <div class="impact-3body">Expanded the platform's enterprise scalability while improving stability and processing efficiency</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">🔁 Reflection</span>
-          </div>
-          <div class="section-content">
-            <div class="reveal-block">
-              <p>Looking back, the hardest part was not making the architecture decision itself. It was staying decisive while so much remained ambiguous.</p>
-              <p>We could not fully reproduce the issue internally, the constraints kept changing, and the client relationship was already under pressure. I had to keep Engineering moving while giving Client Success and senior commercial leadership enough clarity to manage the customer with confidence. That forced me to be deliberate about what we knew, what we were still learning, and which decisions could not wait for perfect information.</p>
-              <p>The workaround would have been easier in the moment, and it likely would have made the client happier sooner. Choosing the platform solution meant accepting that the pressure would continue while we worked toward the right answer. Every additional update required more care, more stakeholder alignment, and more confidence in why we had chosen that path.</p>
-              <p>I came away from this experience more comfortable operating in ambiguity and more disciplined about product boundaries. Sometimes the right product decision does not make the immediate situation easier. The job is to understand the tradeoff clearly enough to make that decision intentionally, then lead people through the consequences of it.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- INITIATIVE 03 -->
-      <div id="cs03" class="case-panel">
-        <div class="case-meta">
-          <span class="case-index">Product Initiative 03</span>
-        </div>
-
-        <h2 class="case-title">Designing AI Around the Moment of Need</h2>
-
-        <div class="glance-block">
-          <div class="glance-accent">
-            <span class="glance-title">At a Glance</span>
-            <p>I turned a broad AI concept into a validated product strategy that leadership could act on, reframing the opportunity around a clearer user need and grounding the direction in customer evidence and technical feasibility. I designed the AI strategy around user trust and adoption, sequencing capabilities based on the level of responsibility users were ready to delegate to AI. The resulting product blueprint strengthened investment confidence, enabled faster progression from investment to delivery, and gave the business an actionable path to scalable AI value.</p>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">❗ The Problem</span>
-          </div>
-          <div class="section-content">
-            <p>AI products can become impressive solutions to poorly framed problems when technical possibility gets ahead of user need.</p>
-            <p>The initial concept combined decisions that belonged to different personas and different moments in the workflow. For field reps, the more meaningful opportunity was helping them prepare for the healthcare provider already in front of them with the right context, insights, and guidance.</p>
-            <p>💡 <strong>The product challenge was identifying where AI could create the most meaningful value in the rep's existing workflow, then designing the experience around that moment.</strong></p>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">⚖️ Product Decision</span>
-          </div>
-          <div class="section-content">
-            <p>The most consequential product decision came from changing the question we were trying to answer.</p>
-            <p><strong>Original framing:</strong></p>
-            <p>"Who should I prioritize this week?"</p>
-            <p><strong>Reframed around the rep's moment of need:</strong></p>
-            <p>"What do I need to know to make this conversation count?"</p>
-            <p>That shift changed the direction of the product. Instead of centering broad territory planning, I focused the experience on helping reps walk into each provider conversation better prepared with relevant insights and actionable guidance.</p>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">🔎 Discovery &amp; Validation</span>
-          </div>
-          <div class="section-content">
-            <p>The reframe gave me a stronger hypothesis. Discovery determined whether it held up.</p>
-            <p>My role was to connect user insight, technical feasibility, and adoption risk into one coherent product direction.</p>
-            <p>I used two discovery tracks in parallel:</p>
-            <ul>
-              <li><strong>Voice of Customer:</strong> Conversations with brand managers across multiple pharmaceutical manufacturer companies surfaced a consistent friction point. Reps were assembling coverage information, previous interaction context, formulary changes, and competitive insights across disconnected sources before customer engagements.</li>
-              <li><strong>Data Science:</strong> Exploratory working sessions helped me understand which AI capabilities were technically viable, what data inputs each required, and where data limitations could materially affect the experience.</li>
-            </ul>
-            <p><strong>I treated technical feasibility as part of product discovery rather than something to validate after the product direction had already been set.</strong></p>
-            <p>Together, those inputs gave me three criteria for shaping the product:</p>
-            <ul>
-              <li><strong>User need:</strong> Solve a recognizable problem within the rep's existing workflow</li>
-              <li><strong>AI feasibility:</strong> Match capabilities to data that could reliably support them</li>
-              <li><strong>Adoption:</strong> Introduce AI responsibility at a pace users could understand and trust</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">🧠 AI Product Strategy</span>
-          </div>
-          <div class="section-content">
-            <p>I sequenced AI capabilities based on <strong>user trust and adoption risk</strong>, rather than simply starting with the most technically ambitious capability.</p>
-            <p><strong>1. Start by augmenting a task the user already owns</strong></p>
-            <p>AI generated talking points help a rep prepare for an engagement with a healthcare provider already on the calendar. The AI adds value without asking the rep to change how they decide where to spend their time.</p>
-            <p><strong>2. Introduce recommendations through a smaller decision</strong></p>
-            <p>Suggested next engagements introduce AI driven prioritization within a narrower, lower stakes context while the rep is already in the field.</p>
-            <p><strong>3. Expand into broader decision support after credibility is established</strong></p>
-            <p>Once users have experience with the quality and reasoning behind earlier recommendations, the product can introduce broader daily opportunity guidance.</p>
-            <p>💡 <strong>Each phase was designed to earn the credibility needed for the next. The sequencing itself became part of the AI product strategy.</strong></p>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">📈 Impact</span>
-          </div>
-          <div class="section-content">
-            <p class="impact-hero">Reframed a broad AI concept into a validated product strategy that leadership could act on, reducing investment risk and creating an actionable path to scalable AI value.</p>
-            <div class="impact-3grid">
-              <div class="impact-3card">
-                <div class="impact-3head">Strengthened investment confidence</div>
-                <div class="impact-3body">Validated the user problem and AI feasibility before significant build investment, reducing the risk of funding a technically compelling solution that would struggle to earn adoption</div>
-              </div>
-              <div class="impact-3card">
-                <div class="impact-3head">Created a clearer path from investment to delivery</div>
-                <div class="impact-3body">Connected the user problem, MVP scope, data requirements, explainability, and capability sequencing into a product blueprint that could translate directly into roadmap and delivery decisions</div>
-              </div>
-              <div class="impact-3card">
-                <div class="impact-3head">Built for adoption, not just capability</div>
-                <div class="impact-3body">Designed the AI strategy to expand responsibility as user trust grows, giving the business a path to introduce increasingly valuable AI capabilities without making adoption depend on users accepting high stakes recommendations from day one</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label-col">
-            <span class="section-name">🔁 Reflection</span>
-          </div>
-          <div class="section-content">
-            <div class="reveal-block">
-              <p>What I think about most from this work is how easy it would have been to keep refining the original concept simply because the technology was compelling. Stepping back and questioning the problem changed almost everything that followed.</p>
-              <p>It sharpened an instinct I now bring to AI product work: start with the decision the user is trying to make and the moment in which they need help. The sophistication of the AI matters, but its value becomes much clearer when the capability fits naturally into a real workflow and the user understands why they should trust it.</p>
-              <p>The sequencing work also changed how I think about AI adoption. Helping someone prepare for a decision they already own asks for a very different level of trust than asking them to accept a recommendation from the system. I became much more deliberate about separating what AI can do from what users are ready to delegate to it.</p>
-              <p>That is what I am most proud of in this initiative. I took a broad AI idea and gave it product discipline: a clearer user problem, a defined moment of value, a technically grounded path forward, and a strategy for earning greater responsibility with the user over time.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </main>
   </div>
+</header>
 
-  <p class="portfolio-note">© 2026 Sabrina Nguyen · Product Portfolio</p>
+<div class="layout">
+  <nav class="sidebar" aria-label="Case studies">
+    <p class="sidebar-label">Connect With Me</p>
+    <div class="sidebar-footer">
+      <div class="contact-links">
+        <a href="mailto:sabrinann@gmail.com" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          sabrinann@gmail.com
+        </a>
+        <a href="tel:7042873721" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l1.09-1.09a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          704-287-3721
+        </a>
+        <a href="https://www.linkedin.com/in/sabrina-nguyen-7ab9b9102/" class="contact-link" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <span class="contact-link" style="cursor:default;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          New York, NY
+        </span>
+      </div>
+    </div>
 
-  </div>
+    <div class="sidebar-divider"></div>
 
-  <script>
-    function showCase(id, navEl) {
-      document.querySelectorAll('.case-panel').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      navEl.classList.add('active');
-    }
-  </script>
+    <p class="sidebar-label">Product Initiatives</p>
+    <a class="nav-item active" onclick="showCase('cs01',this)">
+      <span class="nav-number">01</span>
+      <span class="nav-title">Taking a SaaS Platform from 0→1</span>
+      <div class="nav-tags"><span class="nav-tag">0→1</span><span class="nav-tag">GTM</span><span class="nav-tag">NPD</span></div>
+    </a>
+    <a class="nav-item" onclick="showCase('cs02',this)">
+      <span class="nav-number">02</span>
+      <span class="nav-title">Scalability Over Customization</span>
+      <div class="nav-tags"><span class="nav-tag">Enterprise</span><span class="nav-tag">Stakeholders</span><span class="nav-tag">Platform</span></div>
+    </a>
+    <a class="nav-item" onclick="showCase('cs03',this)">
+      <span class="nav-number">03</span>
+      <span class="nav-title">Designing AI Around the Moment of Need</span>
+      <div class="nav-tags"><span class="nav-tag">Discovery</span><span class="nav-tag">AI Strategy</span><span class="nav-tag">User Trust</span></div>
+    </a>
+  </nav>
 
+  <main class="main">
+
+    <!-- INITIATIVE 01 -->
+    <div id="cs01" class="case-panel active">
+      <div class="case-meta">
+        <span class="case-index">Product Initiative 01</span>
+      </div>
+      <h2 class="case-title">Taking a SaaS Platform from 0→1</h2>
+      <div class="glance-block">
+        <div class="glance-accent"><span class="glance-title">At a Glance</span><p>I translated a business objective focused on enterprise growth into a new B2B SaaS product offering, expanding the company's product portfolio to serve a headquarters persona and unlock larger commercial opportunities. I chose a modular platform model and a focused MVP to reduce upfront investment risk while preserving flexibility in how the product could be commercialized and expanded over time. I led the strategy from concept through market launch, securing a paying client within days of commercial enablement and giving the business early commercial validation to guide future investment and growth.</p></div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">❗ The Problem</span></div>
+        <div class="section-content">
+          <p>Pharmaceutical manufacturers invest heavily in commercial strategy at headquarters, but strategic planning and execution in the field often operate through disconnected workflows.</p>
+          <p>For the business, that gap also represented a growth constraint. The existing product served the field execution persona, while larger enterprise opportunities required creating value for headquarters teams as well.</p>
+          <p>The product opportunity was to create a cohesive platform that connected strategic planning with execution in the field while expanding the product into a new user persona.</p>
+          <p>💡 <strong>The product challenge was broader than adding new functionality:</strong> how do you evolve an existing product into a larger enterprise platform without committing to the entire vision before demand is proven?</p>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">🧠 Product Strategy</span></div>
+        <div class="section-content">
+          <p>I wanted faster time to market, flexibility in the commercialization model, and a practical way to expand into a new enterprise persona without building the full platform upfront. So I chose a modular platform approach.</p>
+          <p>The approach had to accomplish three things:</p>
+          <ul>
+            <li><strong>Reach the market faster:</strong> Deliver meaningful value before completing the entire platform</li>
+            <li><strong>Create commercialization flexibility:</strong> Allow customers to adopt and purchase capabilities based on their needs</li>
+            <li><strong>Preserve the larger product vision:</strong> Build each capability as part of a cohesive workflow connecting headquarters strategy with field execution</li>
+          </ul>
+          <p>💡 <strong>The goal was not to prove we could build the entire platform. It was to prove we could create enough value for a new persona to earn the right to build more.</strong></p>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">⚖️ Key Product Decisions</span></div>
+        <div class="section-content">
+          <p><strong>Modular platform over monolithic</strong></p>
+          <p>Breaking the vision into independently valuable modules reduced upfront investment risk and created more flexibility in how the product could be packaged, sold, and expanded.</p>
+          <p><strong>Focused MVP over broad initial scope</strong></p>
+          <p>Concentrating the first release on one meaningful workflow allowed the team to test the product and commercial hypothesis without spreading investment across the entire platform vision.</p>
+          <p><strong>Build for the current opportunity without designing into a corner</strong></p>
+          <p>I kept the MVP deliberately scoped while making architecture and workflow decisions with future modules in mind. That balance allowed us to move quickly without making the first release responsible for every future use case.</p>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">🤝 From Product Strategy to Market</span></div>
+        <div class="section-content">
+          <p>Once the strategy was set, the next challenge was turning a broad platform vision into something each function could act on and ultimately take to market.</p>
+          <p>My role was to keep product strategy, delivery, and commercialization moving toward the same MVP.</p>
+          <ul>
+            <li><strong>Product, UX, and Engineering:</strong> Translated the vision into a prioritized roadmap, MVP scope, epics, requirements, and an executable backlog; stood up the new scrum team and maintained tight feedback loops as the product evolved</li>
+            <li><strong>Product Marketing and Commercial:</strong> Pressure tested the value proposition and positioning against market conversations, developed enablement materials, and refined how the product was communicated externally</li>
+            <li><strong>Sales and Solution Consulting:</strong> Supported product demonstrations and real customer conversations, creating a direct feedback loop between what we were building and what the market was responding to</li>
+          </ul>
+          <p>That cross-functional alignment mattered because launching the product was only one part of the objective. The organization also needed to understand how to position it, sell it, and learn from the first market signals.</p>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">📈 Impact</span></div>
+        <div class="section-content">
+          <p class="impact-hero">Secured the first paying client within days of commercial enablement, the fastest turn from launch to revenue on the team that year.</p>
+          <div class="impact-3grid">
+            <div class="impact-3card"><div class="impact-3head">0 → live launch</div><div class="impact-3body">Took a new B2B SaaS offering from concept through commercial launch</div></div>
+            <div class="impact-3card"><div class="impact-3head">New persona unlocked</div><div class="impact-3body">Expanded the product footprint into a new headquarters persona</div></div>
+            <div class="impact-3card"><div class="impact-3head">Built to scale</div><div class="impact-3body">Established a modular foundation for independent future scaling</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">🔁 Reflection</span></div>
+        <div class="section-content">
+          <div class="reveal-block">
+            <p>What stands out to me most about this work is that the hardest part was not executing a roadmap. It was deciding what deserved to become the roadmap in the first place. We had a business objective and a broader platform opportunity, but no predetermined product shape for how to pursue it.</p>
+            <p>The modular strategy and focused MVP taught me to think about product structure as a way to learn, not just a way to deliver. By choosing a smaller starting point while preserving the broader platform vision, we could create commercial value, test the underlying assumptions, and use real market evidence to inform what deserved investment next.</p>
+            <p>Later market signals ultimately changed the case for continuing to invest in every module we had originally envisioned. That became an equally important part of the lesson for me. Getting something to market is not the end of validation, and being committed to a product strategy should never mean becoming attached to it when the evidence changes.</p>
+            <p>That experience changed how I think about product strategy. A strategy can provide conviction and direction without becoming a commitment to every assumption behind it. The real discipline is knowing what you are trying to prove, recognizing when the evidence changes, and being willing to change course without losing sight of the larger objective.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INITIATIVE 02 -->
+    <div id="cs02" class="case-panel">
+      <div class="case-meta">
+        <span class="case-index">Product Initiative 02</span>
+      </div>
+      <h2 class="case-title">Scalability Over Customization</h2>
+      <div class="glance-block">
+        <div class="glance-accent">
+          <span class="glance-title">At a Glance</span>
+          <p>I led a platform redesign that protected a strategically important enterprise account and turned an extreme client edge case into a scalable product capability. I chose a platform solution over a faster client specific workaround, accepting a longer timeline and sustained client pressure to protect scalability. I managed stakeholder expectations across Engineering, Client Success, and senior commercial leadership by translating technical uncertainty into clear business tradeoffs and maintaining confidence in the decision. The client launched successfully, and the solution strengthened the platform's ability to support future enterprise complexity without repeated customization.</p>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">❗ The Problem</span></div>
+        <div class="section-content">
+          <p>Scaling an enterprise product means supporting increasingly complex customers without turning every outlier into custom product logic.</p>
+          <p>A strategically important client introduced an operating model that pushed the platform to up to 15x standard data volume, while the failure conditions could only be reproduced in the client's environment.</p>
+          <p>That created two problems at once: a technical problem with no obvious solution and a client delivery problem with a strategically important relationship at risk.</p>
+          <p>💡 <strong>The product challenge was balancing the needs of the client in front of us with the long term integrity of the platform.</strong></p>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">⚖️ Product Decision</span></div>
+        <div class="section-content">
+          <p>I had two viable paths: contain the issue with a client specific workaround, or invest in a platform solution that could absorb similar complexity in the future.</p>
+          <p>I chose the platform path because it solved a recurring scalability constraint, avoided repeated client specific customization, and created reusable value beyond this one account.</p>
+          <ul>
+            <li><strong>Client specific workaround:</strong> Faster resolution, quicker relief for the client relationship, and lower short term delivery risk, but added technical debt and preserved the same scalability constraint for the next complex customer.</li>
+            <li><strong>Platform solution:</strong> More engineering effort, a longer path to resolution, and continued client pressure in the near term, but addressed the underlying constraint and created a reusable path for future enterprise customers.</li>
+          </ul>
+          <p>💡 <strong>The harder decision was choosing long term product scalability over immediate client relief, knowing that doing so meant carrying the client pressure longer and managing that relationship more deliberately until the solution was ready.</strong></p>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">🤝 Executive &amp; Client Stakeholder Management</span></div>
+        <div class="section-content">
+          <p>Choosing the platform path meant deliberately accepting a longer resolution timeline while the client relationship was already under pressure. The product decision only worked if we could maintain confidence in the path forward long enough to deliver it.</p>
+          <p>I partnered closely with Client Success and senior commercial leadership, including the VP responsible for Strategic Accounts, to translate evolving technical findings into clear business implications, reset expectations when timelines changed, and manage the client relationship while Engineering worked toward a solution.</p>
+          <p>My role was to create enough clarity for each audience to make the next decision.</p>
+          <ul>
+            <li><strong>Engineering:</strong> Protect focus, control scope, and keep the team moving while root causes were still emerging</li>
+            <li><strong>Executive and commercial leadership:</strong> Surface the tradeoffs, risks, and realistic delivery path needed to make informed client decisions</li>
+            <li><strong>Client stakeholders:</strong> Maintain transparency and confidence in the path forward without introducing unnecessary technical complexity</li>
+          </ul>
+          <p>This required managing two tracks simultaneously: solving the underlying product problem and protecting a high value enterprise relationship while that solution was still taking shape.</p>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">📈 Impact</span></div>
+        <div class="section-content">
+          <p class="impact-hero">Protected a strategically important enterprise account while turning an extreme edge case into a reusable platform capability, reducing future customization and strengthening scalability.</p>
+          <div class="impact-3grid">
+            <div class="impact-3card"><div class="impact-3head">Enterprise launch protected</div><div class="impact-3body">Successfully launched a strategically important account despite unprecedented data complexity</div></div>
+            <div class="impact-3card"><div class="impact-3head">Escalation → capability</div><div class="impact-3body">Converted a client escalation into a reusable platform capability, reducing the need for custom engineering going forward</div></div>
+            <div class="impact-3card"><div class="impact-3head">Scalability + stability</div><div class="impact-3body">Expanded the platform's enterprise scalability while improving stability and processing efficiency</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">🔁 Reflection</span></div>
+        <div class="section-content">
+          <div class="reveal-block">
+            <p>Looking back, the hardest part was not making the architecture decision itself. It was staying decisive while so much remained ambiguous.</p>
+            <p>We could not fully reproduce the issue internally, the constraints kept changing, and the client relationship was already under pressure. I had to keep Engineering moving while giving Client Success and senior commercial leadership enough clarity to manage the customer with confidence. That forced me to be deliberate about what we knew, what we were still learning, and which decisions could not wait for perfect information.</p>
+            <p>The workaround would have been easier in the moment, and it likely would have made the client happier sooner. Choosing the platform solution meant accepting that the pressure would continue while we worked toward the right answer. Every additional update required more care, more stakeholder alignment, and more confidence in why we had chosen that path.</p>
+            <p>I came away from this experience more comfortable operating in ambiguity and more disciplined about product boundaries. Sometimes the right product decision does not make the immediate situation easier. The job is to understand the tradeoff clearly enough to make that decision intentionally, then lead people through the consequences of it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INITIATIVE 03 -->
+    <div id="cs03" class="case-panel">
+      <div class="case-meta">
+        <span class="case-index">Product Initiative 03</span>
+      </div>
+      <h2 class="case-title">Designing AI Around the Moment of Need</h2>
+      <div class="glance-block">
+        <div class="glance-accent">
+          <span class="glance-title">At a Glance</span>
+          <p>I turned a broad AI concept into a validated product strategy that leadership could act on, reframing the opportunity around a clearer user need and grounding the direction in customer evidence and technical feasibility. I designed the AI strategy around user trust and adoption, sequencing capabilities based on the level of responsibility users were ready to delegate to AI. The resulting product blueprint strengthened investment confidence, enabled faster progression from investment to delivery, and gave the business an actionable path to scalable AI value.</p>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">❗ The Problem</span></div>
+        <div class="section-content">
+          <p>AI products can become impressive solutions to poorly framed problems when technical possibility gets ahead of user need.</p>
+          <p>The initial concept combined decisions that belonged to different personas and different moments in the workflow. For field reps, the more meaningful opportunity was helping them prepare for the healthcare provider already in front of them with the right context, insights, and guidance.</p>
+          <p>💡 <strong>The product challenge was identifying where AI could create the most meaningful value in the rep's existing workflow, then designing the experience around that moment.</strong></p>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">⚖️ Product Decision</span></div>
+        <div class="section-content">
+          <p>The most consequential product decision came from changing the question we were trying to answer.</p>
+          <p><strong>Original framing:</strong></p>
+          <p>"Who should I prioritize this week?"</p>
+          <p><strong>Reframed around the rep's moment of need:</strong></p>
+          <p>"What do I need to know to make this conversation count?"</p>
+          <p>That shift changed the direction of the product. Instead of centering broad territory planning, I focused the experience on helping reps walk into each provider conversation better prepared with relevant insights and actionable guidance.</p>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">🔎 Discovery &amp; Validation</span></div>
+        <div class="section-content">
+          <p>The reframe gave me a stronger hypothesis. Discovery determined whether it held up.</p>
+          <p>My role was to connect user insight, technical feasibility, and adoption risk into one coherent product direction.</p>
+          <p>I used two discovery tracks in parallel:</p>
+          <ul>
+            <li><strong>Voice of Customer:</strong> Conversations with brand managers across multiple pharmaceutical manufacturer companies surfaced a consistent friction point. Reps were assembling coverage information, previous interaction context, formulary changes, and competitive insights across disconnected sources before customer engagements.</li>
+            <li><strong>Data Science:</strong> Exploratory working sessions helped me understand which AI capabilities were technically viable, what data inputs each required, and where data limitations could materially affect the experience.</li>
+          </ul>
+          <p><strong>I treated technical feasibility as part of product discovery rather than something to validate after the product direction had already been set.</strong></p>
+          <p>Together, those inputs gave me three criteria for shaping the product:</p>
+          <ul>
+            <li><strong>User need:</strong> Solve a recognizable problem within the rep's existing workflow</li>
+            <li><strong>AI feasibility:</strong> Match capabilities to data that could reliably support them</li>
+            <li><strong>Adoption:</strong> Introduce AI responsibility at a pace users could understand and trust</li>
+          </ul>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">🧠 AI Product Strategy</span></div>
+        <div class="section-content">
+          <p>I sequenced AI capabilities based on <strong>user trust and adoption risk</strong>, rather than simply starting with the most technically ambitious capability.</p>
+          <p><strong>1. Start by augmenting a task the user already owns</strong></p>
+          <p>AI generated talking points help a rep prepare for an engagement with a healthcare provider already on the calendar. The AI adds value without asking the rep to change how they decide where to spend their time.</p>
+          <p><strong>2. Introduce recommendations through a smaller decision</strong></p>
+          <p>Suggested next engagements introduce AI driven prioritization within a narrower, lower stakes context while the rep is already in the field.</p>
+          <p><strong>3. Expand into broader decision support after credibility is established</strong></p>
+          <p>Once users have experience with the quality and reasoning behind earlier recommendations, the product can introduce broader daily opportunity guidance.</p>
+          <p>💡 <strong>Each phase was designed to earn the credibility needed for the next. The sequencing itself became part of the AI product strategy.</strong></p>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">📈 Impact</span></div>
+        <div class="section-content">
+          <p class="impact-hero">Reframed a broad AI concept into a validated product strategy that leadership could act on, reducing investment risk and creating an actionable path to scalable AI value.</p>
+          <div class="impact-3grid">
+            <div class="impact-3card"><div class="impact-3head">Strengthened investment confidence</div><div class="impact-3body">Validated the user problem and AI feasibility before significant build investment, reducing the risk of funding a technically compelling solution that would struggle to earn adoption</div></div>
+            <div class="impact-3card"><div class="impact-3head">Created a clearer path from investment to delivery</div><div class="impact-3body">Connected the user problem, MVP scope, data requirements, explainability, and capability sequencing into a product blueprint that could translate directly into roadmap and delivery decisions</div></div>
+            <div class="impact-3card"><div class="impact-3head">Built for adoption, not just capability</div><div class="impact-3body">Designed the AI strategy to expand responsibility as user trust grows, giving the business a path to introduce increasingly valuable AI capabilities without making adoption depend on users accepting high stakes recommendations from day one</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label-col"><span class="section-name">🔁 Reflection</span></div>
+        <div class="section-content">
+          <div class="reveal-block">
+            <p>What I think about most from this work is how easy it would have been to keep refining the original concept simply because the technology was compelling. Stepping back and questioning the problem changed almost everything that followed.</p>
+            <p>It sharpened an instinct I now bring to AI product work: start with the decision the user is trying to make and the moment in which they need help. The sophistication of the AI matters, but its value becomes much clearer when the capability fits naturally into a real workflow and the user understands why they should trust it.</p>
+            <p>The sequencing work also changed how I think about AI adoption. Helping someone prepare for a decision they already own asks for a very different level of trust than asking them to accept a recommendation from the system. I became much more deliberate about separating what AI can do from what users are ready to delegate to it.</p>
+            <p>That is what I am most proud of in this initiative. I took a broad AI idea and gave it product discipline: a clearer user problem, a defined moment of value, a technically grounded path forward, and a strategy for earning greater responsibility with the user over time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<p class="portfolio-note">© 2026 Sabrina Nguyen · Product Portfolio</p>
+
+</div>
+
+<script>
+  function showCase(id, navEl) {
+    document.querySelectorAll('.case-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    navEl.classList.add('active');
+  }
+</script>
 </body>
 </html>
