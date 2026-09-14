@@ -77,6 +77,24 @@
     .case-category-tags { display: flex; gap: 6px; flex-wrap: wrap; }
     .case-cat-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em; color: var(--text-tertiary); border: 1px solid var(--border-light); padding: 3px 8px; border-radius: 3px; text-transform: uppercase; }
     .case-title { font-size: 30px; font-weight: 300; color: var(--text-primary); line-height: 1.25; letter-spacing: -0.3px; margin-bottom: 16px; }
+    #cs01 .case-title, #cs02 .case-title, #cs03 .case-title { font-family: var(--font-mono); font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 10px; }
+    #cs01 .section-block, #cs02 .section-block, #cs03 .section-block { display: block; padding: 16px 0 24px; border-bottom: 1px solid var(--border-light); }
+    #cs01 .section-block:last-of-type, #cs02 .section-block:last-of-type, #cs03 .section-block:last-of-type { border-bottom: none; }
+    #cs01 .section-label-col, #cs02 .section-label-col, #cs03 .section-label-col { padding-top: 0; margin-bottom: 18px; }
+    .lede-block { background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px; padding: 22px 36px 18px; margin: 0 0 24px; }
+    .lede-title { font-size: 24px; font-weight: 500; letter-spacing: -0.3px; color: var(--teal); line-height: 1.4; margin-bottom: 16px; }
+    .lede-support { font-size: 15px; line-height: 1.75; color: var(--text-secondary); font-weight: 300; max-width: 640px; margin-bottom: 28px; }
+    .lede-stat-row { display: flex; gap: 0; border-top: 1px solid var(--border-light); padding-top: 22px; }
+    .lede-stat-item { flex: 1; padding-right: 28px; border-right: 1px solid var(--border-light); }
+    .lede-stat-item:last-child { border-right: none; padding-right: 0; }
+    .lede-stat-item:not(:first-child) { padding-left: 28px; }
+    .lede-stat-number { font-size: 16px; font-weight: 700; color: var(--teal); line-height: 1.3; margin-bottom: 6px; white-space: nowrap; }
+    .lede-stat-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; color: var(--text-secondary); line-height: 1.5; }
+    .story-divider { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; row-gap: 8px; column-gap: 24px; margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--border-light); }
+    .story-divider-label { display: flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); flex-shrink: 0; }
+    .story-divider svg { flex-shrink: 0; opacity: 0.6; }
+    .story-toc { font-size: 12px; color: var(--text-tertiary); line-height: 1.6; }
+    .story-toc .highlight { color: var(--teal); font-weight: 500; }
     .case-hook { font-size: 17px; font-weight: 400; color: var(--text-secondary); line-height: 1.65; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border-light); }
 
     .section-block { display: grid; grid-template-columns: 300px 1fr; gap: 0 32px; padding: 24px 0; border-bottom: 1px solid var(--border-light); }
@@ -131,6 +149,9 @@
       .section-block { grid-template-columns: 1fr; gap: 8px; }
       .section-label-col { display: flex; gap: 8px; align-items: center; }
       .impact-3grid { grid-template-columns: 1fr; }
+      .lede-stat-row { flex-direction: column; gap: 16px; }
+      .lede-stat-item { border-right: none !important; padding: 0 !important; }
+      .lede-stat-number { white-space: normal; }
       .portfolio-note { padding: 32px 24px; }
     }
   </style>
@@ -206,12 +227,31 @@
 
     <!-- INITIATIVE 01 -->
     <div id="cs01" class="case-panel active">
-      <div class="case-meta">
-        <span class="case-index">Product Initiative 01</span>
-      </div>
-      <h2 class="case-title">Taking a SaaS Platform from 0→1</h2>
-      <div class="glance-block">
-        <div class="glance-accent"><span class="glance-title">At a Glance</span><p>I translated a business objective focused on enterprise growth into a new B2B SaaS product offering, expanding the company's product portfolio to serve a headquarters persona and unlock larger commercial opportunities. I chose a modular platform model and a focused MVP to reduce upfront investment risk while preserving flexibility in how the product could be commercialized and expanded over time. I led the strategy from concept through market launch, securing a paying client within days of commercial enablement and giving the business early commercial validation to guide future investment and growth.</p></div>
+      <div class="lede-block">
+        <h2 class="case-title">Taking a SaaS Platform from 0→1</h2>
+        <p class="lede-title">Expanded the product footprint into a new persona, taking the platform from concept to a signed client within days of launch, the fastest turn from launch to revenue that year.</p>
+        <p class="lede-support">I translated a business objective focused on enterprise growth into a new B2B SaaS product offering, choosing a modular platform model and a focused MVP to reduce upfront investment risk while preserving flexibility to expand. I led the strategy from concept through market launch, securing a paying client within days of commercial enablement and giving the business early validation to guide future investment.</p>
+        <div class="lede-stat-row">
+          <div class="lede-stat-item">
+            <div class="lede-stat-number">0 → Live</div>
+            <div class="lede-stat-label">New B2B SaaS Offering Launched</div>
+          </div>
+          <div class="lede-stat-item">
+            <div class="lede-stat-number">New Persona Unlocked</div>
+            <div class="lede-stat-label">Expanded Product Footprint into New Headquarters Persona</div>
+          </div>
+          <div class="lede-stat-item">
+            <div class="lede-stat-number">Enterprise Growth Path</div>
+            <div class="lede-stat-label">Positioned the Platform for Larger Commercial Opportunities</div>
+          </div>
+        </div>
+        <div class="story-divider">
+          <span class="story-divider-label">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            The Full Story
+          </span>
+          <span class="story-toc">❗ The Problem &nbsp;·&nbsp; 🧠 Product Strategy &nbsp;·&nbsp; ⚖️ Key Decisions &nbsp;·&nbsp; 🤝 Go to Market &nbsp;·&nbsp; 🔁 Reflection</span>
+        </div>
       </div>
       <div class="section-block">
         <div class="section-label-col"><span class="section-name">❗ The Problem</span></div>
@@ -260,17 +300,6 @@
         </div>
       </div>
       <div class="section-block">
-        <div class="section-label-col"><span class="section-name">📈 Impact</span></div>
-        <div class="section-content">
-          <p class="impact-hero">Secured the first paying client within days of commercial enablement, the fastest turn from launch to revenue on the team that year.</p>
-          <div class="impact-3grid">
-            <div class="impact-3card"><div class="impact-3head">0 → live launch</div><div class="impact-3body">Took a new B2B SaaS offering from concept through commercial launch</div></div>
-            <div class="impact-3card"><div class="impact-3head">New persona unlocked</div><div class="impact-3body">Expanded the product footprint into a new headquarters persona</div></div>
-            <div class="impact-3card"><div class="impact-3head">Built to scale</div><div class="impact-3body">Established a modular foundation for independent future scaling</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="section-block">
         <div class="section-label-col"><span class="section-name">🔁 Reflection</span></div>
         <div class="section-content">
           <div class="reveal-block">
@@ -285,14 +314,30 @@
 
     <!-- INITIATIVE 02 -->
     <div id="cs02" class="case-panel">
-      <div class="case-meta">
-        <span class="case-index">Product Initiative 02</span>
-      </div>
-      <h2 class="case-title">Scalability Over Customization</h2>
-      <div class="glance-block">
-        <div class="glance-accent">
-          <span class="glance-title">At a Glance</span>
-          <p>I led a platform redesign that protected a strategically important enterprise account and turned an extreme client edge case into a scalable product capability. I chose a platform solution over a faster client specific workaround, accepting a longer timeline and sustained client pressure to protect scalability. I managed stakeholder expectations across Engineering, Client Success, and senior commercial leadership by translating technical uncertainty into clear business tradeoffs and maintaining confidence in the decision. The client launched successfully, and the solution strengthened the platform's ability to support future enterprise complexity without repeated customization.</p>
+      <div class="lede-block">
+        <h2 class="case-title">Scalability Over Customization</h2>
+        <p class="lede-title">Protected a strategically important enterprise account while turning an extreme edge case into a reusable platform capability, reducing future customization and strengthening scalability.</p>
+        <p class="lede-support">A high-pressure client's usage pushed the platform far beyond anything it had handled before, exposing a scalability constraint that a quick fix would not solve for future clients. I chose a platform redesign solution over a faster client specific workaround, accepting a longer timeline and sustained client pressure to protect long-term scalability. I managed stakeholder expectations across Engineering, Client Success, and senior commercial leadership, translating technical uncertainty into clear business tradeoffs and maintaining confidence in the decision throughout.</p>
+        <div class="lede-stat-row">
+          <div class="lede-stat-item">
+            <div class="lede-stat-number">Enterprise Account Protected</div>
+            <div class="lede-stat-label">Successfully Launched Despite Unprecedented Data Complexity</div>
+          </div>
+          <div class="lede-stat-item">
+            <div class="lede-stat-number">Escalation → Capability</div>
+            <div class="lede-stat-label">Converted Client Escalation Into a Reusable Platform Capability</div>
+          </div>
+          <div class="lede-stat-item">
+            <div class="lede-stat-number">Scalability + Stability</div>
+            <div class="lede-stat-label">Improved Platform Scalability, Stability, and Processing Efficiency</div>
+          </div>
+        </div>
+        <div class="story-divider">
+          <span class="story-divider-label">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            The Full Story
+          </span>
+          <span class="story-toc">❗ The Problem &nbsp;·&nbsp; ⚖️ Product Decision &nbsp;·&nbsp; 🤝 Stakeholder Management &nbsp;·&nbsp; 🔁 Reflection</span>
         </div>
       </div>
       <div class="section-block">
@@ -331,17 +376,6 @@
         </div>
       </div>
       <div class="section-block">
-        <div class="section-label-col"><span class="section-name">📈 Impact</span></div>
-        <div class="section-content">
-          <p class="impact-hero">Protected a strategically important enterprise account while turning an extreme edge case into a reusable platform capability, reducing future customization and strengthening scalability.</p>
-          <div class="impact-3grid">
-            <div class="impact-3card"><div class="impact-3head">Enterprise launch protected</div><div class="impact-3body">Successfully launched a strategically important account despite unprecedented data complexity</div></div>
-            <div class="impact-3card"><div class="impact-3head">Escalation → capability</div><div class="impact-3body">Converted a client escalation into a reusable platform capability, reducing the need for custom engineering going forward</div></div>
-            <div class="impact-3card"><div class="impact-3head">Scalability + stability</div><div class="impact-3body">Expanded the platform's enterprise scalability while improving stability and processing efficiency</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="section-block">
         <div class="section-label-col"><span class="section-name">🔁 Reflection</span></div>
         <div class="section-content">
           <div class="reveal-block">
@@ -356,14 +390,30 @@
 
     <!-- INITIATIVE 03 -->
     <div id="cs03" class="case-panel">
-      <div class="case-meta">
-        <span class="case-index">Product Initiative 03</span>
-      </div>
-      <h2 class="case-title">Designing AI Around the Moment of Need</h2>
-      <div class="glance-block">
-        <div class="glance-accent">
-          <span class="glance-title">At a Glance</span>
-          <p>I turned a broad AI concept into a validated product strategy that leadership could act on, reframing the opportunity around a clearer user need and grounding the direction in customer evidence and technical feasibility. I designed the AI strategy around user trust and adoption, sequencing capabilities based on the level of responsibility users were ready to delegate to AI. The resulting product blueprint strengthened investment confidence, enabled faster progression from investment to delivery, and gave the business an actionable path to scalable AI value.</p>
+      <div class="lede-block">
+        <h2 class="case-title">Designing AI Around the Moment of Need</h2>
+        <p class="lede-title">Reframed a broad AI concept into a validated product strategy that leadership could act on, reducing investment risk and creating an actionable path to scalable AI value.</p>
+        <p class="lede-support">A promising AI concept existed without a validated product direction behind it, and technical possibility was getting ahead of a clear user need. I reframed the opportunity around what the user actually needed, grounding the direction in customer evidence and technical feasibility, and designed the AI strategy around user trust and adoption, sequencing capabilities based on the level of responsibility users were ready to delegate to AI.</p>
+        <div class="lede-stat-row">
+          <div class="lede-stat-item">
+            <div class="lede-stat-number">Investment Confidence</div>
+            <div class="lede-stat-label">Validated User Need and AI Feasibility Before Major Investment</div>
+          </div>
+          <div class="lede-stat-item">
+            <div class="lede-stat-number">Clear Path to Delivery</div>
+            <div class="lede-stat-label">Connected User Need, MVP Scope, and Data Requirements Into One Blueprint</div>
+          </div>
+          <div class="lede-stat-item">
+            <div class="lede-stat-number">Built for Adoption</div>
+            <div class="lede-stat-label">Designed AI Responsibility to Expand as User Trust Grows</div>
+          </div>
+        </div>
+        <div class="story-divider">
+          <span class="story-divider-label">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            The Full Story
+          </span>
+          <span class="story-toc">❗ The Problem &nbsp;·&nbsp; ⚖️ Product Decision &nbsp;·&nbsp; 🔎 Discovery &amp; Validation &nbsp;·&nbsp; 🧠 AI Strategy &nbsp;·&nbsp; 🔁 Reflection</span>
         </div>
       </div>
       <div class="section-block">
@@ -415,17 +465,6 @@
           <p><strong>3. Expand into broader decision support after credibility is established</strong></p>
           <p>Once users have experience with the quality and reasoning behind earlier recommendations, the product can introduce broader daily opportunity guidance.</p>
           <p>💡 <strong>Each phase was designed to earn the credibility needed for the next. The sequencing itself became part of the AI product strategy.</strong></p>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label-col"><span class="section-name">📈 Impact</span></div>
-        <div class="section-content">
-          <p class="impact-hero">Reframed a broad AI concept into a validated product strategy that leadership could act on, reducing investment risk and creating an actionable path to scalable AI value.</p>
-          <div class="impact-3grid">
-            <div class="impact-3card"><div class="impact-3head">Strengthened investment confidence</div><div class="impact-3body">Validated the user problem and AI feasibility before significant build investment, reducing the risk of funding a technically compelling solution that would struggle to earn adoption</div></div>
-            <div class="impact-3card"><div class="impact-3head">Created a clearer path from investment to delivery</div><div class="impact-3body">Connected the user problem, MVP scope, data requirements, explainability, and capability sequencing into a product blueprint that could translate directly into roadmap and delivery decisions</div></div>
-            <div class="impact-3card"><div class="impact-3head">Built for adoption, not just capability</div><div class="impact-3body">Designed the AI strategy to expand responsibility as user trust grows, giving the business a path to introduce increasingly valuable AI capabilities without making adoption depend on users accepting high stakes recommendations from day one</div></div>
-          </div>
         </div>
       </div>
       <div class="section-block">
