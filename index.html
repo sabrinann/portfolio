@@ -14,6 +14,7 @@
       --surface: #FFFFFF;
       --surface-dim: #F7F8FA;
       --teal: #0A7B83;
+      --aqua: #0A7B83;
       --text-on-dark: rgba(255,255,255,0.92);
       --text-on-dark-muted: rgba(255,255,255,0.45);
       --text-on-dark-faint: rgba(255,255,255,0.25);
@@ -24,7 +25,7 @@
       --border-dark: rgba(255,255,255,0.1);
       --font: 'DM Sans', -apple-system, sans-serif;
       --font-mono: 'DM Mono', monospace;
-      --sidebar-w: 300px;
+      --sidebar-w: 280px;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     strong, b { font-weight: 700; }
@@ -33,29 +34,33 @@
 
     .page-shell { max-width: 1440px; margin: 0 auto; }
 
-    .site-header { display: grid; grid-template-columns: var(--sidebar-w) 1fr; }
-    .header-brand { padding: 48px 32px; display: flex; flex-direction: column; justify-content: center; }
+    .site-header { display: block; }
+    .header-brand { padding: 48px 20px 0 24px; }
+    .brand-contact { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border-dark); }
+    .brand-contact .sidebar-label { padding: 0; margin-bottom: 14px; }
     .header-info { padding: 48px 0; display: flex; justify-content: center; }
-    .header-info-inner { width: 100%; max-width: 1060px; padding: 0 56px; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-wrap: wrap; }
-    .header-eyebrow { font-family: var(--font-mono); font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+    .header-info-inner { width: 100%; max-width: 1100px; padding: 0 56px; display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+    .header-eyebrow { font-family: var(--font-mono); font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); line-height: 1.7; margin-bottom: 10px; }
     .header-name { font-size: 28px; font-weight: 300; letter-spacing: -0.3px; color: var(--text-on-dark); line-height: 1.2; margin-bottom: 8px; }
-    .header-role { font-size: 12.5px; font-weight: 400; color: var(--text-on-dark-muted); line-height: 1.5; white-space: nowrap; }
-    .header-pitch { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.65); max-width: 560px; font-weight: 300; }
-    .header-right { display: flex; flex-direction: column; gap: 0; text-align: right; padding-bottom: 4px; }
-    .meta-item { display: flex; flex-direction: column; align-items: flex-end; padding: 10px 0; border-bottom: 1px solid var(--border-dark); }
+    .header-role { font-size: 11.5px; font-weight: 400; color: var(--text-on-dark-muted); line-height: 1.5; white-space: nowrap; }
+    .header-pitch { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.65); font-weight: 300; max-width: 840px; }
+    .header-pitch p + p { margin-top: 14px; }
+    .about-headline { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; line-height: 1.3; color: var(--text-on-dark); margin: 0 0 16px; }
+    .header-right { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 32px; text-align: left; border-top: 1px solid var(--border-dark); padding-top: 24px; margin-top: 32px; }
+    .meta-item { display: flex; flex-direction: column; align-items: flex-start; padding: 0; border-bottom: none; }
     .meta-item:last-child { border-bottom: none; }
     .meta-value { font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--text-on-dark); letter-spacing: 0.02em; }
     .meta-label { font-size: 11px; color: var(--text-on-dark-muted); margin-top: 1px; }
 
-    .layout { display: grid; grid-template-columns: var(--sidebar-w) 1fr; min-height: calc(100vh - 260px); }
+    .layout { display: grid; grid-template-columns: var(--sidebar-w) 1fr; min-height: 100vh; }
 
-    .sidebar { border-right: 1px solid var(--border-dark); padding: 40px 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
-    .sidebar-label { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); padding: 0 32px; margin-bottom: 16px; }
-    .nav-item { display: block; padding: 14px 32px; cursor: pointer; border-left: 2px solid transparent; transition: all 0.2s ease; text-decoration: none; }
+    .sidebar { border-right: 1px solid var(--border-dark); padding: 0 0 40px; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+    .sidebar-label { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); padding: 0 20px 0 24px; margin-bottom: 16px; }
+    .nav-item { display: block; padding: 14px 18px 14px 22px; cursor: pointer; border-left: 2px solid transparent; transition: all 0.2s ease; text-decoration: none; }
     .nav-item:hover { background: rgba(255,255,255,0.04); }
     .nav-item.active { border-left-color: var(--teal); background: rgba(10,123,131,0.08); }
     .nav-number { font-family: var(--font-mono); font-size: 10px; color: var(--text-on-dark-faint); display: block; margin-bottom: 4px; letter-spacing: 0.05em; }
-    .nav-title { font-size: 13px; font-weight: 400; color: var(--text-on-dark-muted); line-height: 1.4; }
+    .nav-title { font-size: 12px; font-weight: 400; color: var(--text-on-dark-muted); line-height: 1.4; }
     .nav-item.active .nav-title { color: var(--text-on-dark); }
     .nav-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
     .nav-tag { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.04em; color: var(--text-on-dark-faint); background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 3px; }
@@ -67,7 +72,10 @@
     .contact-link:hover { color: var(--text-on-dark); }
     .contact-link svg { flex-shrink: 0; opacity: 0.5; }
 
-    .main { background: var(--surface-dim); min-height: 100%; }
+    .rail-nav { display: block; }
+    .rail-nav::before { content: ""; display: block; height: 1px; background: var(--border-dark); margin: 28px 20px 24px 24px; }
+    .content-col { min-width: 0; display: flex; flex-direction: column; }
+    .main { flex: 1; background: var(--surface-dim); min-height: 100%; }
     .case-panel { display: none; padding: 48px 56px 80px; max-width: 1100px; margin: 0 auto; }
     .case-panel.active { display: block; }
 
@@ -135,14 +143,57 @@
 
     .portfolio-note { padding: 48px 56px; font-family: var(--font-mono); font-size: 11px; color: var(--text-on-dark-faint); letter-spacing: 0.04em; text-align: center; }
 
+
+    /* ── BANNER v2: full-width hero + segmented initiative bar ── */
+    .page-shell { max-width: none; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
+    .hero-banner { background: radial-gradient(1100px 500px at 85% -10%, #2C4270 0%, rgba(44,66,112,0) 60%), var(--page-bg); }
+    .top-bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 0; }
+    .header-name { font-size: 20px; font-weight: 500; letter-spacing: -0.2px; line-height: 1.2; margin: 0; }
+    .brand-sub { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.42); margin-top: 4px; }
+    .contact-links { flex-direction: row; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .contact-link { font-size: 12.5px; color: rgba(255,255,255,0.82); background: rgba(255,255,255,0.06); border-radius: 999px; padding: 8px 14px; white-space: nowrap; transition: background 0.15s, color 0.15s; }
+    a.contact-link:hover { background: rgba(255,255,255,0.12); color: #fff; }
+    .contact-link svg { opacity: 0.7; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 72px; padding: 40px 0 36px; align-items: start; }
+    .header-eyebrow { font-size: 12px; letter-spacing: 0.14em; color: var(--aqua); line-height: 1.4; margin-bottom: 0; }
+    .about-headline { font-size: 40px; font-weight: 500; letter-spacing: -1.1px; line-height: 1.1; margin: 18px 0 0; }
+    .about-headline span { color: var(--aqua); }
+    .header-right { grid-template-columns: repeat(2, auto); justify-content: start; gap: 24px 44px; margin-top: 36px; padding-top: 0; border-top: none; }
+    .meta-value { font-family: var(--font); font-size: 17px; font-weight: 500; letter-spacing: -0.2px; }
+    .meta-label { font-size: 12.5px; color: rgba(255,255,255,0.62); margin-top: 3px; }
+    .header-pitch { max-width: none; font-size: 15px; line-height: 1.72; color: rgba(255,255,255,0.62); }
+    .header-pitch p:first-child { font-size: 16.5px; color: rgba(255,255,255,0.82); }
+    .header-pitch p + p { margin-top: 16px; }
+    .seg-wrap { display: block; position: sticky; top: 0; z-index: 20; background: var(--page-bg); padding: 12px 0 28px; }
+    .seg { background: rgba(255,255,255,0.07); border-radius: 22px; padding: 6px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .nav-item { border-left: none; border-radius: 16px; padding: 16px 18px; display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.62); transition: background 0.2s ease, color 0.2s ease; }
+    .nav-item:hover { background: rgba(255,255,255,0.06); }
+    .nav-number { display: inline; margin: 0; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.42); }
+    .nav-title { font-size: 14.5px; color: inherit; line-height: 1.3; white-space: nowrap; }
+    .nav-item.active { background: #fff; color: var(--text-primary); box-shadow: 0 8px 24px rgba(8,15,30,0.28); }
+    .nav-item.active .nav-title { color: var(--text-primary); font-weight: 500; }
+    .nav-item.active .nav-number { color: var(--teal); }
+    .case-panel { max-width: 1180px; padding: 36px 48px 80px; }
+
     @media (max-width: 768px) {
       .site-header { grid-template-columns: 1fr; }
       .header-brand { border-bottom: 1px solid var(--border-dark); padding: 32px 24px; }
       .header-role { white-space: normal; }
       .header-info { padding: 32px 0; }
-      .header-info-inner { padding: 0 24px; flex-direction: column; align-items: flex-start; gap: 24px; }
-      .header-right { flex-direction: row; text-align: left; align-items: flex-start; flex-wrap: wrap; gap: 0 24px; width: 100%; }
-      .meta-item { align-items: flex-start; border-bottom: none; padding: 4px 0; }
+      .header-info-inner { padding: 0 24px; gap: 0; }
+      .header-pitch { display: block; }
+      .about-headline { font-size: 19px; }
+      .header-pitch p + p { margin-top: 14px; }
+      .header-right { grid-template-columns: 1fr 1fr; margin-top: 24px; gap: 20px 24px; width: 100%; }
+      .meta-item { padding: 0; }
+      .layout { display: flex !important; flex-direction: column; }
+      .sidebar, .content-col { display: contents; }
+      .header-brand { order: 1; padding: 32px 24px 28px; border-bottom: 1px solid var(--border-dark); }
+      .site-header { order: 2; }
+      .rail-nav { order: 3; padding-bottom: 16px; }
+      .rail-nav::before { margin: 0 24px 24px; }
+      .main { order: 4; }
       .layout { grid-template-columns: 1fr; }
       .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border-dark); padding: 24px 0; }
       .case-panel { padding: 32px 24px 56px; }
@@ -153,40 +204,43 @@
       .lede-stat-item { border-right: none !important; padding: 0 !important; }
       .portfolio-note { padding: 32px 24px; }
     }
+
+    @media (max-width: 1240px) {
+      .nav-title { white-space: normal; }
+      .hero-grid { gap: 48px; }
+      .about-headline { font-size: 36px; }
+    }
+    @media (max-width: 768px) {
+      .wrap { padding: 0 24px; }
+      .top-bar { flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px 0 8px; }
+      .contact-links { justify-content: flex-start; }
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; padding: 28px 0 24px; }
+      .about-headline { font-size: 30px; letter-spacing: -0.6px; }
+      .header-right { grid-template-columns: 1fr 1fr; gap: 20px 24px; margin-top: 28px; }
+      .meta-value { font-size: 16px; }
+      .seg-wrap { position: static; padding: 0 0 28px; }
+      .seg { grid-template-columns: 1fr; }
+      .case-panel { padding: 28px 24px 56px; }
+    }
   </style>
 </head>
 <body>
 
 <div class="page-shell">
 
-<header class="site-header">
-  <div class="header-brand">
-    <p class="header-eyebrow">Product Portfolio</p>
-    <h1 class="header-name">Sabrina Nguyen</h1>
-    <p class="header-role">Product Owner · Product Manager</p>
-  </div>
-  <div class="header-info">
-    <div class="header-info-inner">
-      <p class="header-pitch">At MMIT, I build products that help pharmaceutical manufacturers navigate a fragmented market access landscape, reducing the delays that stand between patients and the therapies they need. The product initiatives below represent a sample of my work, chosen to show how I think, not just what I've shipped. Each one reflects a different dimension of product work.</p>
-      <div class="header-right">
-        <div class="meta-item"><span class="meta-value">3.5 Years</span><span class="meta-label">Product Management</span></div>
-        <div class="meta-item"><span class="meta-value">10+ Years</span><span class="meta-label">Health Tech &amp; Life Sciences</span></div>
-        <div class="meta-item"><span class="meta-value">Claims · IQVIA · MMIT</span><span class="meta-label">Data Products</span></div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<div class="layout">
-  <nav class="sidebar" aria-label="Case studies">
-    <p class="sidebar-label">Connect With Me</p>
-    <div class="sidebar-footer">
-      <div class="contact-links">
+<header class="hero-banner">
+<div class="wrap">
+<div class="top-bar">
+<div class="brand">
+<h1 class="header-name">Sabrina Nguyen</h1>
+<p class="brand-sub">Product Portfolio</p>
+</div>
+<div class="contact-links">
         <a href="mailto:sabrinann@gmail.com" class="contact-link">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           sabrinann@gmail.com
         </a>
-        <a href="tel:7042873721" class="contact-link">
+        <a href="tel:+17042873721" class="contact-link">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l1.09-1.09a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           704-287-3721
         </a>
@@ -199,36 +253,48 @@
           New York, NY
         </span>
       </div>
-    </div>
-
-    <div class="sidebar-divider"></div>
-
-    <p class="sidebar-label">Product Initiatives</p>
-    <a class="nav-item active" onclick="showCase('cs01',this)">
+</div>
+<div class="hero-grid">
+<div class="hero-main">
+<p class="header-eyebrow">About Me</p>
+<h2 class="about-headline">Building thoughtful products at the intersection of <span>healthcare and technology.</span></h2>
+<div class="header-right">
+<div class="meta-item"><span class="meta-value">3.5 Years</span><span class="meta-label">Product Management</span></div>
+<div class="meta-item"><span class="meta-value">10+ Years</span><span class="meta-label">Health Tech &amp; Life Sciences</span></div>
+<div class="meta-item"><span class="meta-value">Pharmaceutical Market Access</span><span class="meta-label">Current Focus</span></div>
+<div class="meta-item"><span class="meta-value">EHR &amp; Clinical Workflows</span><span class="meta-label">Where It Began</span></div>
+</div>
+</div>
+<div class="header-pitch"><p>My career in healthcare technology began at Cerner, where I worked directly with healthcare providers during EHR implementations and saw firsthand how technology shapes clinical workflows and the people who rely on it. Today, I work in Product Management at MMIT, building enterprise software that helps pharmaceutical teams navigate the complexities of market access.</p><p>My approach to Product Management starts with understanding the problem before jumping to a solution. I believe in challenging assumptions, looking beyond immediate requirements, and balancing user needs, business value, and technical feasibility.</p><p>The product initiatives below offer a look at how I put that thinking into practice, including the decisions and tradeoffs behind the solutions I've helped shape.</p></div>
+</div>
+</div>
+</header>
+<nav class="seg-wrap" aria-label="Product initiatives">
+<div class="wrap">
+<div class="seg">
+<a class="nav-item active" onclick="showCase('cs01',this)">
       <span class="nav-number">01</span>
       <span class="nav-title">Taking a SaaS Platform from 0→1</span>
-      <div class="nav-tags"><span class="nav-tag">0→1</span><span class="nav-tag">GTM</span><span class="nav-tag">NPD</span></div>
     </a>
-    <a class="nav-item" onclick="showCase('cs02',this)">
+<a class="nav-item" onclick="showCase('cs02',this)">
       <span class="nav-number">02</span>
       <span class="nav-title">Scalability Over Customization</span>
-      <div class="nav-tags"><span class="nav-tag">Enterprise</span><span class="nav-tag">Stakeholders</span><span class="nav-tag">Platform</span></div>
     </a>
-    <a class="nav-item" onclick="showCase('cs03',this)">
+<a class="nav-item" onclick="showCase('cs03',this)">
       <span class="nav-number">03</span>
       <span class="nav-title">Designing AI Around the Moment of Need</span>
-      <div class="nav-tags"><span class="nav-tag">Discovery</span><span class="nav-tag">AI Strategy</span><span class="nav-tag">User Trust</span></div>
     </a>
-  </nav>
-
-  <main class="main">
+</div>
+</div>
+</nav>
+<main class="main">
 
     <!-- INITIATIVE 01 -->
     <div id="cs01" class="case-panel active">
       <div class="lede-block">
         <h2 class="case-title">Taking a SaaS Platform from 0→1</h2>
         <p class="lede-title">Expanded the product footprint into a new persona, taking the platform from concept to a signed client within days of launch, the fastest turn from launch to revenue that year.</p>
-        <p class="lede-support">The business wanted a path to larger enterprise growth without committing upfront to the full platform vision before demand was proven. I translated that objective into a new B2B SaaS offering, expanding the product footprint to serve a new persona and using a modular platform model and focused MVP to balance speed to market, investment discipline, and commercialization flexibility. I led the strategy from concept through launch, securing a paying client within days of commercial enablement and giving the business immediate market validation to guide future investment.</p>
+        <p class="lede-support">The business saw an opportunity to expand beyond its existing field-facing product into the pharmaceutical headquarters market, but committing to the full platform vision upfront carried significant investment risk. I helped translate that opportunity into a modular SaaS offering, focusing the MVP on a commercially viable workflow while preserving flexibility for future expansion. The approach validated early commercial demand, securing the first paying customer within days of commercial enablement.</p>
         <div class="lede-stat-row">
           <div class="lede-stat-item">
             <div class="lede-stat-number">0 → Live</div>
@@ -399,7 +465,7 @@
           </div>
           <div class="lede-stat-item">
             <div class="lede-stat-number">Faster Path to Value</div>
-            <div class="lede-stat-label">Turned an Ambiguous AI Concept Into an Execution Ready Product Blueprint</div>
+            <div class="lede-stat-label">Turned an Ambiguous AI Concept Into an Actionable Product Blueprint</div>
           </div>
           <div class="lede-stat-item">
             <div class="lede-stat-number">Built to Scale Adoption</div>
@@ -479,7 +545,6 @@
     </div>
 
   </main>
-</div>
 
 <p class="portfolio-note">© 2026 Sabrina Nguyen · Product Portfolio</p>
 
@@ -491,6 +556,11 @@
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     navEl.classList.add('active');
+    var bar = document.querySelector('.seg-wrap');
+    if (bar && getComputedStyle(bar).position === 'sticky') {
+      var top = bar.nextElementSibling.getBoundingClientRect().top + window.scrollY - bar.offsetHeight;
+      if (window.scrollY > top) window.scrollTo({ top: top });
+    }
   }
 </script>
 </body>
