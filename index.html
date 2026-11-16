@@ -222,6 +222,52 @@
       .seg { grid-template-columns: 1fr; }
       .case-panel { padding: 28px 24px 56px; }
     }
+    /* ── INITIATIVES v3: framed panel on navy (banner untouched) ── */
+    :root { --aqua-on-dark: #6FCBD0; --text-on-dark-body: rgba(255,255,255,0.72); }
+    .main { background: var(--page-bg); }
+    .case-panel { max-width: 1180px; padding: 0 48px 56px; }
+    .panel-frame { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.14); border-radius: 28px; padding: 40px; display: flex; flex-direction: column; gap: 20px; }
+    .ini-overview { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px 72px; align-items: start; padding-bottom: 16px; }
+    .ini-eyebrow, .card-label, .framing-label { font-family: var(--font-mono); text-transform: uppercase; color: var(--aqua-on-dark); }
+    .ini-eyebrow { font-size: 12px; letter-spacing: 0.14em; }
+    .ini-title { font-size: 40px; font-weight: 500; letter-spacing: -1.1px; line-height: 1.1; margin-top: 18px; color: var(--text-on-dark); text-wrap: balance; }
+    .ini-title span { color: var(--aqua-on-dark); }
+    .ini-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 24px 36px; margin-top: 36px; }
+    .ini-stat-value { font-size: 17px; font-weight: 500; letter-spacing: -0.2px; color: var(--text-on-dark); }
+    .ini-stat-label { font-size: 12.5px; line-height: 1.5; color: rgba(255,255,255,0.62); margin-top: 3px; }
+    .ini-lede { display: flex; flex-direction: column; gap: 16px; font-weight: 300; line-height: 1.72; }
+    .ini-lede p { font-size: 15px; color: rgba(255,255,255,0.62); }
+    .ini-lede p:first-child { font-size: 16.5px; color: rgba(255,255,255,0.82); }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+    .card { background: rgba(255,255,255,0.08); border-radius: 22px; padding: 36px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+    .card-label { font-size: 11px; letter-spacing: 0.12em; }
+    .card-headline { font-size: 22px; font-weight: 500; letter-spacing: -0.4px; line-height: 1.3; color: var(--text-on-dark); text-wrap: balance; }
+    .card p, .card li { font-size: 15px; line-height: 1.72; font-weight: 300; color: var(--text-on-dark-body); }
+    .card p.card-label, .card p.framing-label { font-size: 11px; line-height: 1.4; font-weight: 400; color: var(--aqua-on-dark); }
+    .card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .card strong { font-weight: 500; color: var(--text-on-dark); }
+    .card-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 40px; margin: 8px 0; }
+    .card-cols.ruled { padding-top: 26px; border-top: 1px solid var(--border-dark); }
+    .card-cols h4 { font-size: 17px; font-weight: 500; letter-spacing: -0.2px; line-height: 1.35; color: var(--text-on-dark); margin-bottom: 10px; }
+    .card-cols p { font-size: 14.5px; line-height: 1.7; }
+    .card-cols .step { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 12px; align-items: baseline; }
+    .step-number { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--aqua-on-dark); flex-shrink: 0; }
+    .framing { display: flex; flex-direction: column; gap: 4px; }
+    .framing-label { letter-spacing: 0.1em; }
+    .card p.framing-quote { font-size: 18px; line-height: 1.45; font-weight: 500; color: var(--text-on-dark); }
+    .card p.framing-quote.muted { color: rgba(255,255,255,0.62); font-weight: 400; }
+    .portfolio-note { color: rgba(255,255,255,0.62); }
+    @media (max-width: 900px) {
+      .ini-overview { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .case-panel { padding: 0 24px 40px; }
+      .panel-frame { padding: 16px; border-radius: 22px; }
+      .ini-overview { padding: 8px 8px 12px; }
+      .ini-title { font-size: 30px; letter-spacing: -0.6px; }
+      .card { padding: 24px; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -291,256 +337,280 @@
 
     <!-- INITIATIVE 01 -->
     <div id="cs01" class="case-panel active">
-      <div class="lede-block">
-        <h2 class="case-title">Taking a SaaS Platform from 0→1</h2>
-        <p class="lede-title">Expanded the product footprint into a new persona, taking the platform from concept to a signed client within days of launch, the fastest turn from launch to revenue that year.</p>
-        <p class="lede-support">The business saw an opportunity to expand beyond its existing field-facing product into the pharmaceutical headquarters market, but committing to the full platform vision upfront carried significant investment risk. I helped translate that opportunity into a modular SaaS offering, focusing the MVP on a commercially viable workflow while preserving flexibility for future expansion. The approach validated early commercial demand, securing the first paying customer within days of commercial enablement.</p>
-        <div class="lede-stat-row">
-          <div class="lede-stat-item">
-            <div class="lede-stat-number">0 → Live</div>
-            <div class="lede-stat-label">New B2B SaaS Offering Launched</div>
+      <div class="panel-frame">
+        <section class="ini-overview">
+          <div>
+            <p class="ini-eyebrow">Initiative 01</p>
+            <h2 class="ini-title">Taking a SaaS Platform from <span>0→1</span></h2>
+            <div class="ini-stats">
+              <div><p class="ini-stat-value">0 → Live</p><p class="ini-stat-label">New B2B SaaS Offering Launched</p></div>
+              <div><p class="ini-stat-value">New Persona Unlocked</p><p class="ini-stat-label">Expanded Product Footprint into New Headquarters Persona</p></div>
+              <div><p class="ini-stat-value">Enterprise Growth Path</p><p class="ini-stat-label">Positioned the Platform for Larger Commercial Opportunities</p></div>
+            </div>
           </div>
-          <div class="lede-stat-item">
-            <div class="lede-stat-number">New Persona Unlocked</div>
-            <div class="lede-stat-label">Expanded Product Footprint into New Headquarters Persona</div>
+          <div class="ini-lede">
+            <p>Expanded the product footprint into a new persona, taking the platform from concept to a signed client within days of launch, the fastest turn from launch to revenue that year.</p>
+            <p>The business saw an opportunity to expand beyond its existing field-facing product into the pharmaceutical headquarters market, but committing to the full platform vision upfront carried significant investment risk. I helped translate that opportunity into a modular SaaS offering, focusing the MVP on a commercially viable workflow while preserving flexibility for future expansion. The approach validated early commercial demand, securing the first paying customer within days of commercial enablement.</p>
           </div>
-          <div class="lede-stat-item">
-            <div class="lede-stat-number">Enterprise Growth Path</div>
-            <div class="lede-stat-label">Positioned the Platform for Larger Commercial Opportunities</div>
+        </section>
+
+        <div class="card-grid">
+          <section class="card">
+            <p class="card-label">01 · The Problem</p>
+            <h3 class="card-headline">How do you evolve an existing product into a larger enterprise platform before demand is proven?</h3>
+            <p>Pharmaceutical manufacturers invest heavily in commercial strategy at headquarters, but strategic planning and execution in the field often operate through disconnected workflows.</p>
+            <p>For the business, that gap also represented a growth constraint. The existing product served the field execution persona, while larger enterprise opportunities required creating value for headquarters teams as well.</p>
+            <p>The product opportunity was to create a cohesive platform that connected strategic planning with execution in the field while expanding the product into a new user persona.</p>
+          </section>
+          <section class="card">
+            <p class="card-label">02 · Product Strategy</p>
+            <h3 class="card-headline">Prove we could create enough value for a new persona to earn the right to build more.</h3>
+            <p>I chose a modular platform approach because I wanted faster time to market, flexibility in the commercialization model, and a practical way to expand into a new enterprise persona without building the full platform upfront.</p>
+            <p>The approach had to accomplish three things:</p>
+            <ul>
+              <li><strong>Reach the market faster:</strong> Deliver meaningful value before completing the entire platform</li>
+              <li><strong>Create commercialization flexibility:</strong> Allow customers to adopt and purchase capabilities based on their needs</li>
+              <li><strong>Preserve the larger product vision:</strong> Build each capability as part of a cohesive workflow connecting headquarters strategy with field execution</li>
+            </ul>
+          </section>
+        </div>
+
+        <section class="card">
+          <p class="card-label">03 · Key Product Decisions</p>
+          <div class="card-cols">
+            <div>
+              <h4>Modular platform over monolithic</h4>
+              <p>Breaking the vision into independently valuable modules reduced upfront investment risk and created more flexibility in how the product could be packaged, sold, and expanded.</p>
+            </div>
+            <div>
+              <h4>Focused MVP over broad initial scope</h4>
+              <p>Concentrating the first release on one meaningful workflow allowed the team to test the product and commercial hypothesis without spreading investment across the entire platform vision.</p>
+            </div>
+            <div>
+              <h4>Build for the current opportunity without designing into a corner</h4>
+              <p>I kept the MVP deliberately scoped while making architecture and workflow decisions with future modules in mind. That balance allowed us to move quickly without making the first release responsible for every future use case.</p>
+            </div>
           </div>
-        </div>
-        <div class="story-divider">
-          <span class="story-divider-label">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            The Full Story
-          </span>
-          <span class="story-toc">❗ The Problem &nbsp;·&nbsp; 🧠 Product Strategy &nbsp;·&nbsp; ⚖️ Key Decisions &nbsp;·&nbsp; 🤝 Go to Market &nbsp;·&nbsp; 🔁 Reflection</span>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label-col"><span class="section-name">❗ The Problem</span></div>
-        <div class="section-content">
-          <p>Pharmaceutical manufacturers invest heavily in commercial strategy at headquarters, but strategic planning and execution in the field often operate through disconnected workflows.</p>
-          <p>For the business, that gap also represented a growth constraint. The existing product served the field execution persona, while larger enterprise opportunities required creating value for headquarters teams as well.</p>
-          <p>The product opportunity was to create a cohesive platform that connected strategic planning with execution in the field while expanding the product into a new user persona.</p>
-          <p>💡 <strong>The product challenge was broader than adding new functionality:</strong> how do you evolve an existing product into a larger enterprise platform without committing to the entire vision before demand is proven?</p>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label-col"><span class="section-name">🧠 Product Strategy</span></div>
-        <div class="section-content">
-          <p>I chose a modular platform approach because I wanted faster time to market, flexibility in the commercialization model, and a practical way to expand into a new enterprise persona without building the full platform upfront.</p>
-          <p>The approach had to accomplish three things:</p>
-          <ul>
-            <li><strong>Reach the market faster:</strong> Deliver meaningful value before completing the entire platform</li>
-            <li><strong>Create commercialization flexibility:</strong> Allow customers to adopt and purchase capabilities based on their needs</li>
-            <li><strong>Preserve the larger product vision:</strong> Build each capability as part of a cohesive workflow connecting headquarters strategy with field execution</li>
-          </ul>
-          <p>💡 <strong>The goal was to prove we could create enough value for a new persona to earn the right to build more.</strong></p>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label-col"><span class="section-name">⚖️ Key Product Decisions</span></div>
-        <div class="section-content">
-          <p><strong>Modular platform over monolithic</strong></p>
-          <p>Breaking the vision into independently valuable modules reduced upfront investment risk and created more flexibility in how the product could be packaged, sold, and expanded.</p>
-          <p><strong>Focused MVP over broad initial scope</strong></p>
-          <p>Concentrating the first release on one meaningful workflow allowed the team to test the product and commercial hypothesis without spreading investment across the entire platform vision.</p>
-          <p><strong>Build for the current opportunity without designing into a corner</strong></p>
-          <p>I kept the MVP deliberately scoped while making architecture and workflow decisions with future modules in mind. That balance allowed us to move quickly without making the first release responsible for every future use case.</p>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label-col"><span class="section-name">🤝 From Product Strategy to Market</span></div>
-        <div class="section-content">
-          <p>Once the strategy was set, the next challenge was turning a broad platform vision into something each function could act on and ultimately take to market.</p>
-          <p>My role was to keep product strategy, delivery, and commercialization moving toward the same MVP.</p>
-          <ul>
-            <li><strong>Product, UX, and Engineering:</strong> Translated the vision into a prioritized roadmap, MVP scope, epics, requirements, and an executable backlog; stood up the new scrum team and maintained tight feedback loops as the product evolved</li>
-            <li><strong>Product Marketing and Commercial:</strong> Pressure tested the value proposition and positioning against market conversations, developed enablement materials, and refined how the product was communicated externally</li>
-            <li><strong>Sales and Solution Consulting:</strong> Supported product demonstrations and real customer conversations, creating a direct feedback loop between what we were building and what the market was responding to</li>
-          </ul>
-          <p>That cross-functional alignment mattered because launching the product was only one part of the objective. The organization also needed to understand how to position it, sell it, and learn from the first market signals.</p>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label-col"><span class="section-name">🔁 Reflection</span></div>
-        <div class="section-content">
-          <div class="reveal-block">
-            <p>What stands out to me most about this work is that the hardest part was not executing a roadmap. It was deciding what deserved to become the roadmap in the first place. We had a business objective and a broader platform opportunity, but no predetermined product shape for how to pursue it.</p>
-            <p>The modular strategy and focused MVP taught me to think about product structure as a way to learn, not just a way to deliver. By choosing a smaller starting point while preserving the broader platform vision, we could create commercial value, test the underlying assumptions, and use real market evidence to inform what deserved investment next.</p>
-            <p>Later market signals ultimately changed the case for continuing to invest in every module we had originally envisioned. That became an equally important part of the lesson for me. Getting something to market is not the end of validation, and being committed to a product strategy should never mean becoming attached to it when the evidence changes.</p>
-            <p>That experience changed how I think about product strategy. A strategy can provide conviction and direction without becoming a commitment to every assumption behind it. The real discipline is knowing what you are trying to prove, recognizing when the evidence changes, and being willing to change course without losing sight of the larger objective.</p>
+        </section>
+
+        <section class="card">
+          <p class="card-label">04 · From Product Strategy to Market</p>
+          <p class="card-intro">Once the strategy was set, the next challenge was turning a broad platform vision into something each function could act on and ultimately take to market. My role was to keep product strategy, delivery, and commercialization moving toward the same MVP.</p>
+          <div class="card-cols ruled">
+            <div>
+              <h4>Product, UX, and Engineering</h4>
+              <p>Translated the vision into a prioritized roadmap, MVP scope, epics, requirements, and an executable backlog; stood up the new scrum team and maintained tight feedback loops as the product evolved.</p>
+            </div>
+            <div>
+              <h4>Product Marketing and Commercial</h4>
+              <p>Pressure tested the value proposition and positioning against market conversations, developed enablement materials, and refined how the product was communicated externally.</p>
+            </div>
+            <div>
+              <h4>Sales and Solution Consulting</h4>
+              <p>Supported product demonstrations and real customer conversations, creating a direct feedback loop between what we were building and what the market was responding to.</p>
+            </div>
           </div>
-        </div>
+          <p class="card-intro">That cross-functional alignment mattered because launching the product was only one part of the objective. The organization also needed to understand how to position it, sell it, and learn from the first market signals.</p>
+        </section>
+
+        <section class="card">
+          <p class="card-label">05 · Reflection</p>
+          <p class="card-intro">What stands out to me most about this work is that the hardest part was not executing a roadmap. It was deciding what deserved to become the roadmap in the first place. We had a business objective and a broader platform opportunity, but no predetermined product shape for how to pursue it.</p>
+          <p class="card-intro">The modular strategy and focused MVP taught me to think about product structure as a way to learn, not just a way to deliver. By choosing a smaller starting point while preserving the broader platform vision, we could create commercial value, test the underlying assumptions, and use real market evidence to inform what deserved investment next.</p>
+          <p class="card-intro">Later market signals ultimately changed the case for continuing to invest in every module we had originally envisioned. That became an equally important part of the lesson for me. Getting something to market is not the end of validation, and being committed to a product strategy should never mean becoming attached to it when the evidence changes.</p>
+          <p class="card-intro">That experience changed how I think about product strategy. A strategy can provide conviction and direction without becoming a commitment to every assumption behind it. The real discipline is knowing what you are trying to prove, recognizing when the evidence changes, and being willing to change course without losing sight of the larger objective.</p>
+        </section>
       </div>
     </div>
 
     <!-- INITIATIVE 02 -->
     <div id="cs02" class="case-panel">
-      <div class="lede-block">
-        <h2 class="case-title">Scalability Over Customization</h2>
-        <p class="lede-title">Protected a strategically important enterprise account while turning an extreme edge case into a reusable platform capability, reducing future customization and strengthening scalability.</p>
-        <p class="lede-support">A high-pressure client's usage pushed the platform far beyond anything it had handled before, exposing a scalability constraint that a quick fix would not solve for future clients. I chose a platform redesign solution over a faster client specific workaround, accepting a longer timeline and sustained client pressure to protect long-term scalability. I managed stakeholder expectations across Engineering, Client Success, and senior commercial leadership, translating technical uncertainty into clear business tradeoffs and maintaining confidence in the decision throughout.</p>
-        <div class="lede-stat-row">
-          <div class="lede-stat-item">
-            <div class="lede-stat-number">Enterprise Account Protected</div>
-            <div class="lede-stat-label">Successfully Launched Despite Unprecedented Data Complexity</div>
+      <div class="panel-frame">
+        <section class="ini-overview">
+          <div>
+            <p class="ini-eyebrow">Initiative 02</p>
+            <h2 class="ini-title">Scalability Over <span>Customization</span></h2>
+            <div class="ini-stats">
+              <div><p class="ini-stat-value">Enterprise Account Protected</p><p class="ini-stat-label">Successfully Launched Despite Unprecedented Data Complexity</p></div>
+              <div><p class="ini-stat-value">Escalation → Capability</p><p class="ini-stat-label">Converted Client Escalation Into a Reusable Platform Capability</p></div>
+              <div><p class="ini-stat-value">Scalability + Stability</p><p class="ini-stat-label">Improved Platform Scalability, Stability, and Processing Efficiency</p></div>
+            </div>
           </div>
-          <div class="lede-stat-item">
-            <div class="lede-stat-number">Escalation → Capability</div>
-            <div class="lede-stat-label">Converted Client Escalation Into a Reusable Platform Capability</div>
+          <div class="ini-lede">
+            <p>Protected a strategically important enterprise account while turning an extreme edge case into a reusable platform capability, reducing future customization and strengthening scalability.</p>
+            <p>A high-pressure client's usage pushed the platform far beyond anything it had handled before, exposing a scalability constraint that a quick fix would not solve for future clients. I chose a platform redesign solution over a faster client specific workaround, accepting a longer timeline and sustained client pressure to protect long-term scalability. I managed stakeholder expectations across Engineering, Client Success, and senior commercial leadership, translating technical uncertainty into clear business tradeoffs and maintaining confidence in the decision throughout.</p>
           </div>
-          <div class="lede-stat-item">
-            <div class="lede-stat-number">Scalability + Stability</div>
-            <div class="lede-stat-label">Improved Platform Scalability, Stability, and Processing Efficiency</div>
+        </section>
+
+        <div class="card-grid">
+          <section class="card">
+            <p class="card-label">01 · The Problem</p>
+            <h3 class="card-headline">Balancing the needs of the client in front of us with the long term integrity of the platform.</h3>
+            <p>Scaling an enterprise product means supporting increasingly complex customers without turning every outlier into custom product logic.</p>
+            <p>A strategically important client introduced an operating model that pushed the platform to up to 15x standard data volume, while the failure conditions could only be reproduced in the client's environment.</p>
+            <p>That created two problems at once: a technical problem with no obvious solution and a client delivery problem with a strategically important relationship at risk.</p>
+          </section>
+          <section class="card">
+            <p class="card-label">02 · Product Decision</p>
+            <h3 class="card-headline">Long term product scalability over immediate client relief.</h3>
+            <p>I had two viable paths: contain the issue with a client specific workaround, or invest in a platform solution that could absorb similar complexity in the future.</p>
+            <p>I chose the platform path because it solved a recurring scalability constraint, avoided repeated client specific customization, and created reusable value beyond this one account.</p>
+            <p>Doing so meant carrying the client pressure longer and managing that relationship more deliberately until the solution was ready.</p>
+          </section>
+        </div>
+
+        <section class="card">
+          <p class="card-label">The Two Paths</p>
+          <div class="card-cols">
+            <div>
+              <h4>Client specific workaround</h4>
+              <p>Faster resolution, quicker relief for the client relationship, and lower short term delivery risk, but added technical debt and preserved the same scalability constraint for the next complex customer.</p>
+            </div>
+            <div>
+              <h4>Platform solution</h4>
+              <p>More engineering effort, a longer path to resolution, and continued client pressure in the near term, but addressed the underlying constraint and created a reusable path for future enterprise customers.</p>
+            </div>
           </div>
-        </div>
-        <div class="story-divider">
-          <span class="story-divider-label">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            The Full Story
-          </span>
-          <span class="story-toc">❗ The Problem &nbsp;·&nbsp; ⚖️ Product Decision &nbsp;·&nbsp; 🤝 Stakeholder Management &nbsp;·&nbsp; 🔁 Reflection</span>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label-col"><span class="section-name">❗ The Problem</span></div>
-        <div class="section-content">
-          <p>Scaling an enterprise product means supporting increasingly complex customers without turning every outlier into custom product logic.</p>
-          <p>A strategically important client introduced an operating model that pushed the platform to up to 15x standard data volume, while the failure conditions could only be reproduced in the client's environment.</p>
-          <p>That created two problems at once: a technical problem with no obvious solution and a client delivery problem with a strategically important relationship at risk.</p>
-          <p>💡 <strong>The product challenge was balancing the needs of the client in front of us with the long term integrity of the platform.</strong></p>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label-col"><span class="section-name">⚖️ Product Decision</span></div>
-        <div class="section-content">
-          <p>I had two viable paths: contain the issue with a client specific workaround, or invest in a platform solution that could absorb similar complexity in the future.</p>
-          <p>I chose the platform path because it solved a recurring scalability constraint, avoided repeated client specific customization, and created reusable value beyond this one account.</p>
-          <ul>
-            <li><strong>Client specific workaround:</strong> Faster resolution, quicker relief for the client relationship, and lower short term delivery risk, but added technical debt and preserved the same scalability constraint for the next complex customer.</li>
-            <li><strong>Platform solution:</strong> More engineering effort, a longer path to resolution, and continued client pressure in the near term, but addressed the underlying constraint and created a reusable path for future enterprise customers.</li>
-          </ul>
-          <p>💡 <strong>The harder decision was choosing long term product scalability over immediate client relief, knowing that doing so meant carrying the client pressure longer and managing that relationship more deliberately until the solution was ready.</strong></p>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label-col"><span class="section-name">🤝 Executive &amp; Client Stakeholder Management</span></div>
-        <div class="section-content">
-          <p>Choosing the platform path meant deliberately accepting a longer resolution timeline while the client relationship was already under pressure. The product decision only worked if we could maintain confidence in the path forward long enough to deliver it.</p>
-          <p>I partnered closely with Client Success and senior commercial leadership, including the VP responsible for Strategic Accounts, to translate evolving technical findings into clear business implications, reset expectations when timelines changed, and manage the client relationship while Engineering worked toward a solution.</p>
-          <p>My role was to create enough clarity for each audience to make the next decision.</p>
-          <ul>
-            <li><strong>Engineering:</strong> Protect focus, control scope, and keep the team moving while root causes were still emerging</li>
-            <li><strong>Executive and commercial leadership:</strong> Surface the tradeoffs, risks, and realistic delivery path needed to make informed client decisions</li>
-            <li><strong>Client stakeholders:</strong> Maintain transparency and confidence in the path forward without introducing unnecessary technical complexity</li>
-          </ul>
-          <p>This required managing two tracks simultaneously: solving the underlying product problem and protecting a high value enterprise relationship while that solution was still taking shape.</p>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label-col"><span class="section-name">🔁 Reflection</span></div>
-        <div class="section-content">
-          <div class="reveal-block">
-            <p>Looking back, the hardest part was not making the architecture decision itself. It was staying decisive while so much remained ambiguous.</p>
-            <p>We could not fully reproduce the issue internally, the constraints kept changing, and the client relationship was already under pressure. I had to keep Engineering moving while giving Client Success and senior commercial leadership enough clarity to manage the customer with confidence. That forced me to be deliberate about what we knew, what we were still learning, and which decisions could not wait for perfect information.</p>
-            <p>The workaround would have been easier in the moment, and it likely would have made the client happier sooner. Choosing the platform solution meant accepting that the pressure would continue while we worked toward the right answer. Every additional update required more care, more stakeholder alignment, and more confidence in why we had chosen that path.</p>
-            <p>I came away from this experience more comfortable operating in ambiguity and more disciplined about product boundaries. Sometimes the right product decision does not make the immediate situation easier. The job is to understand the tradeoff clearly enough to make that decision intentionally, then lead people through the consequences of it.</p>
+        </section>
+
+        <section class="card">
+          <p class="card-label">03 · Executive &amp; Client Stakeholder Management</p>
+          <p class="card-intro">Choosing the platform path meant deliberately accepting a longer resolution timeline while the client relationship was already under pressure. The product decision only worked if we could maintain confidence in the path forward long enough to deliver it.</p>
+          <p class="card-intro">I partnered closely with Client Success and senior commercial leadership, including the VP responsible for Strategic Accounts, to translate evolving technical findings into clear business implications, reset expectations when timelines changed, and manage the client relationship while Engineering worked toward a solution. My role was to create enough clarity for each audience to make the next decision.</p>
+          <div class="card-cols ruled">
+            <div>
+              <h4>Engineering</h4>
+              <p>Protect focus, control scope, and keep the team moving while root causes were still emerging.</p>
+            </div>
+            <div>
+              <h4>Executive and commercial leadership</h4>
+              <p>Surface the tradeoffs, risks, and realistic delivery path needed to make informed client decisions.</p>
+            </div>
+            <div>
+              <h4>Client stakeholders</h4>
+              <p>Maintain transparency and confidence in the path forward without introducing unnecessary technical complexity.</p>
+            </div>
           </div>
-        </div>
+          <p class="card-intro">This required managing two tracks simultaneously: solving the underlying product problem and protecting a high value enterprise relationship while that solution was still taking shape.</p>
+        </section>
+
+        <section class="card">
+          <p class="card-label">04 · Reflection</p>
+          <p class="card-intro">Looking back, the hardest part was not making the architecture decision itself. It was staying decisive while so much remained ambiguous.</p>
+          <p class="card-intro">We could not fully reproduce the issue internally, the constraints kept changing, and the client relationship was already under pressure. I had to keep Engineering moving while giving Client Success and senior commercial leadership enough clarity to manage the customer with confidence. That forced me to be deliberate about what we knew, what we were still learning, and which decisions could not wait for perfect information.</p>
+          <p class="card-intro">The workaround would have been easier in the moment, and it likely would have made the client happier sooner. Choosing the platform solution meant accepting that the pressure would continue while we worked toward the right answer. Every additional update required more care, more stakeholder alignment, and more confidence in why we had chosen that path.</p>
+          <p class="card-intro">I came away from this experience more comfortable operating in ambiguity and more disciplined about product boundaries. Sometimes the right product decision does not make the immediate situation easier. The job is to understand the tradeoff clearly enough to make that decision intentionally, then lead people through the consequences of it.</p>
+        </section>
       </div>
     </div>
 
     <!-- INITIATIVE 03 -->
     <div id="cs03" class="case-panel">
-      <div class="lede-block">
-        <h2 class="case-title">Designing AI Around the Moment of Need</h2>
-        <p class="lede-title">Reframed a broad AI concept into a validated product strategy that leadership could act on, reducing investment risk and creating an actionable path to scalable AI value.</p>
-        <p class="lede-support">A promising AI concept existed without a validated product direction behind it, and technical possibility was getting ahead of a clear user need. I reframed the opportunity around where AI could genuinely help, not just where it was technically possible, grounding the direction in customer evidence and technical feasibility, and designed the AI strategy around user trust and adoption, sequencing capabilities based on the level of responsibility users were ready to delegate to AI. That discipline turned a promising idea into a direction leadership could confidently invest in.</p>
-        <div class="lede-stat-row">
-          <div class="lede-stat-item">
-            <div class="lede-stat-number">Strengthened Investment Confidence</div>
-            <div class="lede-stat-label">Grounded AI Capabilities in a Meaningful User Problem Before Major Build Commitment</div>
+      <div class="panel-frame">
+        <section class="ini-overview">
+          <div>
+            <p class="ini-eyebrow">Initiative 03</p>
+            <h2 class="ini-title">Designing AI Around the <span>Moment of Need</span></h2>
+            <div class="ini-stats">
+              <div><p class="ini-stat-value">Strengthened Investment Confidence</p><p class="ini-stat-label">Grounded AI Capabilities in a Meaningful User Problem Before Major Build Commitment</p></div>
+              <div><p class="ini-stat-value">Faster Path to Value</p><p class="ini-stat-label">Turned an Ambiguous AI Concept Into an Actionable Product Blueprint</p></div>
+              <div><p class="ini-stat-value">Built to Scale Adoption</p><p class="ini-stat-label">Designed AI Responsibility to Expand as User Trust Grows</p></div>
+            </div>
           </div>
-          <div class="lede-stat-item">
-            <div class="lede-stat-number">Faster Path to Value</div>
-            <div class="lede-stat-label">Turned an Ambiguous AI Concept Into an Actionable Product Blueprint</div>
+          <div class="ini-lede">
+            <p>Reframed a broad AI concept into a validated product strategy that leadership could act on, reducing investment risk and creating an actionable path to scalable AI value.</p>
+            <p>A promising AI concept existed without a validated product direction behind it, and technical possibility was getting ahead of a clear user need. I reframed the opportunity around where AI could genuinely help, not just where it was technically possible, grounding the direction in customer evidence and technical feasibility, and designed the AI strategy around user trust and adoption, sequencing capabilities based on the level of responsibility users were ready to delegate to AI. That discipline turned a promising idea into a direction leadership could confidently invest in.</p>
           </div>
-          <div class="lede-stat-item">
-            <div class="lede-stat-number">Built to Scale Adoption</div>
-            <div class="lede-stat-label">Designed AI Responsibility to Expand as User Trust Grows</div>
+        </section>
+
+        <div class="card-grid">
+          <section class="card">
+            <p class="card-label">01 · The Problem</p>
+            <h3 class="card-headline">Where could AI create the most meaningful value in the rep's existing workflow?</h3>
+            <p>AI products can become impressive solutions to poorly framed problems when technical possibility gets ahead of user need.</p>
+            <p>The initial concept combined decisions that belonged to different personas and different moments in the workflow. For field reps, the more meaningful opportunity was helping them prepare for the healthcare provider already in front of them with the right context, insights, and guidance.</p>
+          </section>
+          <section class="card">
+            <p class="card-label">02 · Product Decision</p>
+            <h3 class="card-headline">The most consequential decision came from changing the question we were trying to answer.</h3>
+            <div class="framing">
+              <p class="framing-label">Original framing</p>
+              <p class="framing-quote muted">"Who should I prioritize this week?"</p>
+            </div>
+            <div class="framing">
+              <p class="framing-label">Reframed around the rep's moment of need</p>
+              <p class="framing-quote">"What do I need to know to make this conversation count?"</p>
+            </div>
+            <p>That shift changed the direction of the product. Instead of centering broad territory planning, I focused the experience on helping reps walk into each provider conversation better prepared with relevant insights and actionable guidance.</p>
+          </section>
+        </div>
+
+        <section class="card">
+          <p class="card-label">03 · Discovery &amp; Validation</p>
+          <p class="card-intro">The reframe gave me a stronger hypothesis. Discovery determined whether it held up. My role was to connect user insight, technical feasibility, and adoption risk into one coherent product direction, using two discovery tracks in parallel.</p>
+          <div class="card-cols">
+            <div>
+              <h4>Voice of Customer</h4>
+              <p>Conversations with brand managers across multiple pharmaceutical manufacturer companies surfaced a consistent friction point. Reps were assembling coverage information, previous interaction context, formulary changes, and competitive insights across disconnected sources before customer engagements.</p>
+            </div>
+            <div>
+              <h4>Data Science</h4>
+              <p>Exploratory working sessions helped me understand which AI capabilities were technically viable, what data inputs each required, and where data limitations could materially affect the experience.</p>
+            </div>
           </div>
-        </div>
-        <div class="story-divider">
-          <span class="story-divider-label">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            The Full Story
-          </span>
-          <span class="story-toc">❗ The Problem &nbsp;·&nbsp; ⚖️ Product Decision &nbsp;·&nbsp; 🔎 Discovery &amp; Validation &nbsp;·&nbsp; 🧠 AI Strategy &nbsp;·&nbsp; 🔁 Reflection</span>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label-col"><span class="section-name">❗ The Problem</span></div>
-        <div class="section-content">
-          <p>AI products can become impressive solutions to poorly framed problems when technical possibility gets ahead of user need.</p>
-          <p>The initial concept combined decisions that belonged to different personas and different moments in the workflow. For field reps, the more meaningful opportunity was helping them prepare for the healthcare provider already in front of them with the right context, insights, and guidance.</p>
-          <p>💡 <strong>The product challenge was identifying where AI could create the most meaningful value in the rep's existing workflow, then designing the experience around that moment.</strong></p>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label-col"><span class="section-name">⚖️ Product Decision</span></div>
-        <div class="section-content">
-          <p>The most consequential product decision came from changing the question we were trying to answer.</p>
-          <p><strong>Original framing:</strong></p>
-          <p>"Who should I prioritize this week?"</p>
-          <p><strong>Reframed around the rep's moment of need:</strong></p>
-          <p>"What do I need to know to make this conversation count?"</p>
-          <p>That shift changed the direction of the product. Instead of centering broad territory planning, I focused the experience on helping reps walk into each provider conversation better prepared with relevant insights and actionable guidance.</p>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label-col"><span class="section-name">🔎 Discovery &amp; Validation</span></div>
-        <div class="section-content">
-          <p>The reframe gave me a stronger hypothesis. Discovery determined whether it held up.</p>
-          <p>My role was to connect user insight, technical feasibility, and adoption risk into one coherent product direction.</p>
-          <p>I used two discovery tracks in parallel:</p>
-          <ul>
-            <li><strong>Voice of Customer:</strong> Conversations with brand managers across multiple pharmaceutical manufacturer companies surfaced a consistent friction point. Reps were assembling coverage information, previous interaction context, formulary changes, and competitive insights across disconnected sources before customer engagements.</li>
-            <li><strong>Data Science:</strong> Exploratory working sessions helped me understand which AI capabilities were technically viable, what data inputs each required, and where data limitations could materially affect the experience.</li>
-          </ul>
-          <p><strong>I treated technical feasibility as part of product discovery rather than something to validate after the product direction had already been set.</strong></p>
-          <p>Together, those inputs gave me three criteria for shaping the product:</p>
-          <ul>
-            <li><strong>User need:</strong> Solve a recognizable problem within the rep's existing workflow</li>
-            <li><strong>AI feasibility:</strong> Match capabilities to data that could reliably support them</li>
-            <li><strong>Adoption:</strong> Introduce AI responsibility at a pace users could understand and trust</li>
-          </ul>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label-col"><span class="section-name">🧠 AI Product Strategy</span></div>
-        <div class="section-content">
-          <p>I sequenced AI capabilities based on <strong>user trust and adoption risk</strong>, rather than simply starting with the most technically ambitious capability.</p>
-          <p><strong>1. Start by augmenting a task the user already owns</strong></p>
-          <p>AI generated talking points help a rep prepare for an engagement with a healthcare provider already on the calendar. The AI adds value without asking the rep to change how they decide where to spend their time.</p>
-          <p><strong>2. Introduce recommendations through a smaller decision</strong></p>
-          <p>Suggested next engagements introduce AI driven prioritization within a narrower, lower stakes context while the rep is already in the field.</p>
-          <p><strong>3. Expand into broader decision support after credibility is established</strong></p>
-          <p>Once users have experience with the quality and reasoning behind earlier recommendations, the product can introduce broader daily opportunity guidance.</p>
-          <p>💡 <strong>Each phase was designed to earn the credibility needed for the next. The sequencing itself became part of the AI product strategy.</strong></p>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label-col"><span class="section-name">🔁 Reflection</span></div>
-        <div class="section-content">
-          <div class="reveal-block">
-            <p>What I think about most from this work is how easy it would have been to keep refining the original concept simply because the technology was compelling. Stepping back and questioning the problem changed almost everything that followed.</p>
-            <p>It sharpened an instinct I now bring to AI product work: start with the decision the user is trying to make and the moment in which they need help. The sophistication of the AI matters, but its value becomes much clearer when the capability fits naturally into a real workflow and the user understands why they should trust it.</p>
-            <p>The sequencing work also changed how I think about AI adoption. Helping someone prepare for a decision they already own asks for a very different level of trust than asking them to accept a recommendation from the system. I became much more deliberate about separating what AI can do from what users are ready to delegate to it.</p>
-            <p>That is what I am most proud of in this initiative. I took a broad AI idea and gave it product discipline: a clearer user problem, a defined moment of value, a technically grounded path forward, and a strategy for earning greater responsibility with the user over time.</p>
+          <p class="card-intro"><strong>I treated technical feasibility as part of product discovery rather than something to validate after the product direction had already been set.</strong> Together, those inputs gave me three criteria for shaping the product:</p>
+          <div class="card-cols ruled">
+            <div>
+              <h4>User need</h4>
+              <p>Solve a recognizable problem within the rep's existing workflow.</p>
+            </div>
+            <div>
+              <h4>AI feasibility</h4>
+              <p>Match capabilities to data that could reliably support them.</p>
+            </div>
+            <div>
+              <h4>Adoption</h4>
+              <p>Introduce AI responsibility at a pace users could understand and trust.</p>
+            </div>
           </div>
-        </div>
+        </section>
+
+        <section class="card">
+          <p class="card-label">04 · AI Product Strategy</p>
+          <p class="card-intro">I sequenced AI capabilities based on <strong>user trust and adoption risk</strong>, rather than simply starting with the most technically ambitious capability.</p>
+          <div class="card-cols ruled">
+            <div class="step">
+              <span class="step-number">1</span>
+              <div>
+                <h4>Start by augmenting a task the user already owns</h4>
+                <p>AI generated talking points help a rep prepare for an engagement with a healthcare provider already on the calendar. The AI adds value without asking the rep to change how they decide where to spend their time.</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-number">2</span>
+              <div>
+                <h4>Introduce recommendations through a smaller decision</h4>
+                <p>Suggested next engagements introduce AI driven prioritization within a narrower, lower stakes context while the rep is already in the field.</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-number">3</span>
+              <div>
+                <h4>Expand into broader decision support after credibility is established</h4>
+                <p>Once users have experience with the quality and reasoning behind earlier recommendations, the product can introduce broader daily opportunity guidance.</p>
+              </div>
+            </div>
+          </div>
+          <p class="card-intro"><strong>Each phase was designed to earn the credibility needed for the next. The sequencing itself became part of the AI product strategy.</strong></p>
+        </section>
+
+        <section class="card">
+          <p class="card-label">05 · Reflection</p>
+          <p class="card-intro">What I think about most from this work is how easy it would have been to keep refining the original concept simply because the technology was compelling. Stepping back and questioning the problem changed almost everything that followed.</p>
+          <p class="card-intro">It sharpened an instinct I now bring to AI product work: start with the decision the user is trying to make and the moment in which they need help. The sophistication of the AI matters, but its value becomes much clearer when the capability fits naturally into a real workflow and the user understands why they should trust it.</p>
+          <p class="card-intro">The sequencing work also changed how I think about AI adoption. Helping someone prepare for a decision they already own asks for a very different level of trust than asking them to accept a recommendation from the system. I became much more deliberate about separating what AI can do from what users are ready to delegate to it.</p>
+          <p class="card-intro">That is what I am most proud of in this initiative. I took a broad AI idea and gave it product discipline: a clearer user problem, a defined moment of value, a technically grounded path forward, and a strategy for earning greater responsibility with the user over time.</p>
+        </section>
       </div>
     </div>
 
